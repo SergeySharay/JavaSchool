@@ -1,62 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html lang="ru">
-
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap Template</title>
-
-  <!-- Bootstrap -->
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="css/font-awesome.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
+  <jsp:include page="haeder.html" flush="true"/><!-- header -->
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
-        <span class="sr-only">Открыть навигацию</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <!-- <a class="navbar-brand" href="mypage.html">Лого</a> -->
-    </div>
 
-    <div class="collapse navbar-collapse" id="responsive-menu">
-      <ul class="nav navbar-nav">
-        <li><a href="/"><i class="glyphicon glyphicon-home"></i></a></li>
-        <li><a href="about.html">О компании</a></li>
-        <li><a href="cat.jsp">Каталог товаров</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-        <li><a href="delivery.html">Доставка</a></li>
-        <li><a href="#">Регистрация </a></li>
-      </ul>
-      <form action="" class="navbar-form navbar-right">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="E-mail" value="">
-
-        </div>
-        <div class="form-group">
-
-          <input type="password" class="form-control" placeholder="Пароль" value="">
-        </div>
-        <button type="submit" class="btn btn-primary">
-          <i class="fa fa-sign-in"></i>Войти
-        </button>
-      </form>
-    </div>
-  </div>
-</div>
+<jsp:include page="navbar.html" flush="true"/>
 
 <div class="container">
   <div class="row">
@@ -73,6 +22,7 @@
 
     <div class="container">
       <ul class="nav nav-tabs">
+
       <%!
         //ProductService productService = new ProductService();
         //Set<String> products2 = productService.brandGetAll();
@@ -80,10 +30,9 @@
         //out.println(c);
       //}
       %>
-        <li class="active"><a href="#"> <span class="badge">5</span></a></li>
-
-      <!--  <li class="active"><a href="#">Бренд 1 <span class="badge">5</span></a></li>
-        <li><a href="#">Бренд 2 <span class="badge">6</span></a></li> -->
+        <li class="active"><a href="#"> Бренд 1<span class="badge">5</span></a></li>
+        <li><a href="#">Бренд 2 <span class="badge">5</span></a></li>
+        <li><a href="#">Бренд 3 <span class="badge">6</span></a></li>
         </ul>
       <hr>
     </div>
