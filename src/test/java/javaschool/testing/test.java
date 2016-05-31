@@ -2,6 +2,7 @@ package javaschool.testing;
 import javaschool.DAO.*;
 import javaschool.crud.ClientService;
 import javaschool.entity.Client;
+import javaschool.entity.ClientAdress;
 import javaschool.entity.Product;
 import org.junit.Test;
 
@@ -12,11 +13,11 @@ public class test {
     //GenericDaoHibernateImpl<Client,Long> genericDaoHibernate = new GenericDaoHibernateImpl<Client,Long>(Client.class);
     //GenericDaoHibernateImpl<Product,Long> productgenericDaoHibernate = new GenericDaoHibernateImpl<Product,Long>(Product.class);
     //ProductDAOImpl productDAO = new ProductDAOImpl();
-    ClientDAOImpl ClientDAOImpl = new ClientDAOImpl();
+    ClientDAOImpl clientDAO = new ClientDAOImpl();
     //ClientService clientService = new ClientService();
     @Test
     public void testSaveRecord() throws Exception {
-
+/*
         //Создаем клиента для записи в БД
         Client client1 = new Client();
         client1.setName("audi");
@@ -28,9 +29,13 @@ public class test {
         //Вывели записанную в БД запись
         System.out.println(client1.getName() + client.getId());
         //clientDAO.get(client.getId());
-
+            */
         //System.out.println(clientService.get((long) 2).getClientAdressSet());
-        System.out.println(ClientDAOImpl.get((long) 2).getClientAdressSet());
+        System.out.println(clientDAO.get((long) 2).getClientAdressSet());
+
+        for (ClientAdress clientAdress :clientDAO.get((long) 2).getClientAdressSet()){
+            System.out.println(clientAdress.getCity());
+        }
       //  System.out.println(productDAO.getBrands());
        // System.out.println(productDAO.getCollections("Venis"));
         // System.out.println(productDAO.getProducts());

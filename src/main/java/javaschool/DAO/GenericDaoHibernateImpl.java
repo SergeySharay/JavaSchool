@@ -7,13 +7,11 @@ import java.io.Serializable;
 public class GenericDaoHibernateImpl<T, PK extends Serializable> implements GenericDAO <T,PK> {
 
     private Class<T> type;
-
     public EntityManager entityManager = Persistence.createEntityManagerFactory("clients").createEntityManager();
-
     public GenericDaoHibernateImpl() {}
-    //public GenericDaoHibernateImpl(Class<T> type) {
-    //    this.type = type;
-    //}
+    public GenericDaoHibernateImpl(Class<T> type) {
+        this.type = type;
+    }
 
     public T add(T object){
         entityManager.getTransaction().begin();
@@ -28,7 +26,7 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
         entityManager.getTransaction().commit();
     }
     public T get(PK id){
-        return (T)entityManager.find(type, id);
+        return entityManager.find(type, id);
        }
     public void update(T object){
         entityManager.getTransaction().begin();
