@@ -11,21 +11,18 @@ public class ClientService {
 
     public Client add(Client client){
         em.getTransaction().begin();
-        Client carFromDB = em.merge(client);
+        Client clientFromDB = em.merge(client);
         em.getTransaction().commit();
-        return carFromDB;
+        return clientFromDB;
     }
-
     public void delete(long id){
         em.getTransaction().begin();
         em.remove(get(id));
         em.getTransaction().commit();
     }
-
     public Client get(long id){
         return em.find(Client.class, id);
     }
-
     public void update(Client client){
         em.getTransaction().begin();
         em.merge(client);
@@ -33,8 +30,7 @@ public class ClientService {
     }
 
     public List<Client> getAll(){
-        TypedQuery<Client> namedQuery = em.createNamedQuery("Client.getAll", Client.class);
+        TypedQuery<Client> namedQuery = em.createNamedQuery("Client.getClients", Client.class);
         return namedQuery.getResultList();
     }
-
 }

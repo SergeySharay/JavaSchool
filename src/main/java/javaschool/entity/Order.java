@@ -1,96 +1,36 @@
 package javaschool.entity;
 
-import java.sql.Date;
-import java.util.HashMap;
-import java.util.*;
+
+import sun.rmi.runtime.Log;
+
+import javax.persistence.*;
+
+
+
+@Entity
+@Table(name="order", schema="client")
 
 public class Order {
-    private Long id;
-    private Long clientId;
-    private Long clientAdressId;
-    private Long productId;
-    private String payment;
-    private String delivery;
-    private String paymentStatus;
-    private String orderStatus;
-    private Date orderDate;
-    Map<Product,Integer> products = new HashMap<Product,Integer>();
+    private Long idOrder;
+    private Long idProduct;
 
     public Order() {
     }
 
-    public Long getId() {
-        return id;
+    @Id
+    @Column(name="id_Order", length = 10, unique = true, nullable = false)
+    public Long getIdOrder() {
+        return idOrder;
+    }
+    public void setIdOrder(Long idOrder) {
+        this.idOrder = idOrder;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Column(name="id_Product", length = 10, unique = true, nullable = false)
+    public Long getIdProduct() {
+        return idProduct;
     }
-
-    public Long getClientId() {
-        return clientId;
+    public void setIdProduct(Long idProduct) {
+        this.idProduct = idProduct;
     }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
-    }
-
-    public Long getClientAdressId() {
-        return clientAdressId;
-    }
-
-    public void setClientAdressId(Long clientAdressId) {
-        this.clientAdressId = clientAdressId;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public String getPayment() {
-        return payment;
-    }
-
-    public void setPayment(String payment) {
-        this.payment = payment;
-    }
-
-    public String getDelivery() {
-        return delivery;
-    }
-
-    public void setDelivery(String delivery) {
-        this.delivery = delivery;
-    }
-
-    public String getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
-    public String getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-
-
-
 }

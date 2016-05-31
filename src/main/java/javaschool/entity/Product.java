@@ -6,21 +6,16 @@ import java.util.Date;
 @Table(name="product", schema="client")
 @NamedQueries({
 
-        @NamedQuery(name = "Product.getAll", query = "SELECT P from Product P"),
-        @NamedQuery(name = "Product.BrandGetAll", query = "SELECT P.brand from Product P")
+        @NamedQuery(name = "Product.getProducts", query = "SELECT P from Product P"),
+        @NamedQuery(name = "Product.getBrands", query = "SELECT P.brand from Product P"),
+        @NamedQuery(name = "Product.getCollections", query = "SELECT P.collection from Product P where P.brand = :brand")
 
 })
 
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String category;
-
-    @Column(name="product_brand", length = 100)
     private String brand;
-
     private String collection;
     private String name;
     private String color;
@@ -34,72 +29,97 @@ public class Product {
     public Product() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id", length = 10, unique = true, nullable = false)
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Column(name="product_category", length = 100)
     public String getCategory() {
         return category;
     }
     public void setCategory(String category) {
         this.category = category;
     }
+
+    @Column(name="product_brand", length = 100)
     public String getBrand() {
         return brand;
     }
     public void setBrand(String brand) {
         this.brand = brand;
     }
+
+    @Column(name="product_collection", length = 100)
     public String getCollection() {
         return collection;
     }
     public void setCollection(String collection) {
         this.collection = collection;
     }
+
+    @Column(name="product_name", length = 100)
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
+
+    @Column(name="product_color", length = 100)
     public String getColor() {
         return color;
     }
     public void setColor(String color) {
         this.color = color;
     }
+
+    @Column(name="product_picture", length = 100)
     public String getPicture() {
         return picture;
     }
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    @Column(name="product_price", length = 10)
     public Long getPrice() {
         return price;
     }
     public void setPrice(Long price) {
         this.price = price;
     }
+
+    @Column(name="product_length", length = 10)
     public Long getLength() {
         return length;
     }
     public void setLength(Long length) {
         this.length = length;
     }
+
+    @Column(name="product_width", length = 10)
     public Long getWitdh() {
         return witdh;
     }
     public void setWitdh(Long witdh) {
         this.witdh = witdh;
     }
+
+    @Column(name="product_weight", length = 10)
     public Long getVeight() {
         return weight;
     }
     public void setVeight(Long veight) {
         this.weight = veight;
     }
+
+    @Column(name="product_quantity", length = 10)
     public Long getQuantity() {
         return quantity;
     }

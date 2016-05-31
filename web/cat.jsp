@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="javaschool.crud.ProductService" %>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
   <jsp:include page="haeder.html" flush="true"/><!-- header -->
@@ -23,13 +24,6 @@
     <div class="container">
       <ul class="nav nav-tabs">
 
-      <%!
-        //ProductService productService = new ProductService();
-        //Set<String> products2 = productService.brandGetAll();
-        //for(String c : products2){
-        //out.println(c);
-      //}
-      %>
         <li class="active"><a href="#"> Бренд 1<span class="badge">5</span></a></li>
         <li><a href="#">Бренд 2 <span class="badge">5</span></a></li>
         <li><a href="#">Бренд 3 <span class="badge">6</span></a></li>

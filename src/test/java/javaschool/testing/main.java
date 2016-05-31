@@ -12,15 +12,32 @@ import java.util.*;
 
 public class main {
     ProductService productService = new ProductService();
+    ClientService clientService = new ClientService();
     @Test
     public void testSelect() throws Exception {
-        List<Product> products = productService.getAll();
-        Set <String> products2 = productService.brandGetAll();
+        List<Client> clients = clientService.getAll();
+        Set <String> products2 = productService.getBrands();
+        Set <String> collections = productService.getCollections("Venis");
+        System.out.println("---------");
         //Выводим полученый список
         for(String c : products2){
             System.out.println(c);
         }
         System.out.println("---------");
+
+        for(String c : collections){
+            System.out.println(c);
+        }
+        System.out.println("---------");
+        for(Client c : clients){
+            System.out.println(c.getName());
+        }
+        System.out.println("---------");
+        for(Client c : clients){
+            System.out.println(c.getId());
+        }
+        System.out.println();
+
        // for(Product c : products){
         //    System.out.println(c);
        // }
