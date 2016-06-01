@@ -1,6 +1,8 @@
 package javaschool.entity;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="product", schema="client")
@@ -25,6 +27,7 @@ public class Product {
     private Long witdh;
     private Long weight;
     private Long quantity;
+    private Set<Orders> orders= new HashSet<Orders>();
 
     public Product() {
     }
@@ -37,6 +40,14 @@ public class Product {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @ManyToMany(mappedBy = "bucket")
+    public Set<Orders> getOrders() {
+        return orders;
+    }
+    public void setOrders(Set<Orders> orders) {
+        this.orders = orders;
     }
 
     @Column(name="product_category", length = 100)
@@ -112,10 +123,10 @@ public class Product {
     }
 
     @Column(name="product_weight", length = 10)
-    public Long getVeight() {
+    public Long getWeight() {
         return weight;
     }
-    public void setVeight(Long veight) {
+    public void setWeight(Long veight) {
         this.weight = veight;
     }
 

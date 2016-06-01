@@ -7,7 +7,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ProductDAOImpl extends GenericDaoHibernateImpl<Product,Long> {
+public class ProductDAOImpl extends GenericDaoHibernateImpl<Product,Long> implements ProductDAO {
+
+
+    public ProductDAOImpl() {
+        super(Product.class);
+    }
+
     public List<Product> getProducts(){
         TypedQuery<Product> namedQuery = entityManager.createNamedQuery("Product.getProducts", Product.class);
         return namedQuery.getResultList();

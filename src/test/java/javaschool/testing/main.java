@@ -34,7 +34,7 @@ public class main {
         }
         System.out.println("---------");
         for(Client c : clients){
-            System.out.println(c.getId());
+            System.out.println(c.getClientId());
         }
         System.out.println();
 

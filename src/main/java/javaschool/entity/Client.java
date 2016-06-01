@@ -16,9 +16,8 @@ public class Client {
     private String password;
     private Integer permission;
     private Date birthday;
-
+    private Set<Orders> orders;
     private Set<ClientAdress> clientAdressSet;
-
 
     public Client(){
     }
@@ -26,19 +25,27 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id", length = 10, unique = true, nullable = false)
-    public Long getId(){
+    public Long getClientId() {
         return clientId;
     }
-    public void setId(Long  id){
-        this.clientId=id;
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
-    @OneToMany(mappedBy="client", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity=ClientAdress.class, mappedBy="client", fetch = FetchType.LAZY)
     public Set<ClientAdress> getClientAdressSet() {
         return clientAdressSet;
     }
     public void setClientAdressSet(Set<ClientAdress> clientAdressSet) {
         this.clientAdressSet = clientAdressSet;
+    }
+
+    @OneToMany(targetEntity=Orders.class,mappedBy="client",cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    public Set<Orders> getOrders() {
+        return orders;
+    }
+    public void setOrders(Set<Orders> orders) {
+        this.orders = orders;
     }
 
     @Column(name="client_email", length = 100)

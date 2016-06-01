@@ -7,16 +7,21 @@ import java.util.*;
 
 @Entity
 @Table(name="orders", schema="client")
+@NamedQueries({
+@NamedQuery(name="Orders.getOrders",query = "SELECT O from Orders O"),
+@NamedQuery(name="Orders.getClientOrders",query = "SELECT O.id from Orders O where client=:client")
+        })
+
 public class Orders {
 
     private Long id;
-    private Long clientId;
+    private Client client;
     private String payment;
     private String delivery;
     private String paymentStatus;
     private String orderStatus;
     private Date orderDate;
-    Map<Product,Integer> products = new LinkedHashMap<Product, Integer>();
+    private Set <Product> bucket= new LinkedHashSet<Product>();
 
     public Orders() {
     }
@@ -30,12 +35,24 @@ public class Orders {
         this.id = id;
     }
 
-    @Column(name="client_id", length = 10)
-    public Long getClientId() {
-        return clientId;
+    @ManyToOne()
+    @JoinColumn(name="client_id")
+    public Client getClient() {
+        return client;
     }
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    @ManyToMany()
+    @JoinTable(name = "order_product",
+            joinColumns ={@JoinColumn(name="id_Order")},
+            inverseJoinColumns={@JoinColumn(name="id_Product")})
+    public Set<Product> getBucket() {
+        return bucket;
+    }
+    public void setBucket(Set<Product> bucket) {
+        this.bucket = bucket;
     }
 
     @Column(name="payment", length = 100)
