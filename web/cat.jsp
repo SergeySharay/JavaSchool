@@ -1,4 +1,6 @@
-<%@page import="javaschool.crud.ProductService" %>
+<%@ page import="java.util.Set" %>
+<%@ page import="java.util.HashSet" %>
+<%@ page import="java.util.Iterator" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
@@ -9,7 +11,8 @@
 <jsp:include page="navbar.html" flush="true"/>
 
 <div class="container">
-  <div class="row">
+
+  <div class="row"><!-- хлебные крошки-->
     <div class="container">
       <ol class="breadcrumb">
         <li><a href="index.jsp">
@@ -19,82 +22,50 @@
         <li><a href="#">Категория</a></li>
         <li class="active">Название</li>
       </ol>
-    </div>
+    </div><!-- хлебные крошки-->
+  </div>
 
-    <div class="container">
+  <div class="container"> <!-- вкладки брендов -->
       <ul class="nav nav-tabs">
+        <%
+          boolean flag = true;
+          Set<String> brands = (Set<String>) request.getAttribute("brands");
+          int i=1;
+          for (String brand : brands) {
 
-        <li class="active"><a href="#"> Бренд 1<span class="badge">5</span></a></li>
-        <li><a href="#">Бренд 2 <span class="badge">5</span></a></li>
-        <li><a href="#">Бренд 3 <span class="badge">6</span></a></li>
+            Set<String> collections = (Set<String>) request.getAttribute("colOf"+brand);
+            if(collections.size()>0){
+
+            if (flag){out.print("<li class=\"active\">");flag=false;}else out.print("<li>");
+        %>
+          <a href="#tab-<%out.print(i++);%>" data-toggle="tab">
+          <% out.print(brand); %>
+          <span class="badge">
+          <% out.print(collections.size()); %>
+          </span></a></li>
+        <% } }%>
+       <!-- <li><a href="#">Бренд 2 <span class="badge">5</span></a></li>
+        <li><a href="#">Бренд 3 <span class="badge">6</span></a></li> -->
         </ul>
+
+    <div class="tab-content">
+      <%
+        int j=1;
+        for (String brand2 : brands) {
+      %>
+        <div class="tab-pane in active" id="tab-<%out.print(j++);%>">
+        <p>тело <%out.print(j);%></p>
+        </div>
+        <%}%>
+    </div>
+
+
+
       <hr>
-    </div>
 
   </div>
 
-  <div class="row masonry" data-columns>
-    <div class="item">
-      <div class="thumbnail">
-        <img src="http://placehold.it/400x240" alt="">
-        <div class="caption">
-          <h3><a href="#">Название нашего поста</a></h3>
-          <p>Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст</p>
-          <a href="#" class="btn btn-success">Подробнее <i class="fa fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="thumbnail">
-        <img src="http://placehold.it/400x240" alt="">
-        <div class="caption">
-          <h3><a href="#">Название нашего поста</a></h3>
-          <p>Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст</p>
-          <a href="#" class="btn btn-success">Подробнее <i class="fa fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="thumbnail">
-        <img src="http://placehold.it/400x240" alt="">
-        <div class="caption">
-          <h3><a href="#">Название нашего поста</a></h3>
-          <p>Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст</p>
-          <a href="#" class="btn btn-success">Подробнее <i class="fa fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="thumbnail">
-        <img src="http://placehold.it/400x240" alt="">
-        <div class="caption">
-          <h3><a href="#">Название нашего поста</a></h3>
-          <p>Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст</p>
-          <a href="#" class="btn btn-success">Подробнее <i class="fa fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="thumbnail">
-        <img src="http://placehold.it/400x240" alt="">
-        <div class="caption">
-          <h3><a href="#">Название нашего поста</a></h3>
-          <p>Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст</p>
-          <a href="#" class="btn btn-success">Подробнее <i class="fa fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="thumbnail">
-        <img src="http://placehold.it/400x240" alt="">
-        <div class="caption">
-          <h3><a href="#">Название нашего поста</a></h3>
-          <p>Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст</p>
-          <a href="#" class="btn btn-success">Подробнее <i class="fa fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <nav class="text-center">
     <ul class="pagination pagination-lg">
       <li class="disabled">
@@ -125,13 +96,15 @@
         </a>
       </li>
     </ul>
-  </nav>
-  <nav>
+  </nav><!-- вперёд\назад-->
+
+  <nav> <!-- вперёд\назад-->
     <ul class="pager">
       <li class="previous"><a href="#">&larr; Назад</a></li>
       <li class="next disabled"><a href="#">Вперёд &rarr;</a></li>
     </ul>
-  </nav>
+  </nav><!-- вперёд\назад-->
+
 </div>
 
 

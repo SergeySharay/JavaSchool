@@ -18,7 +18,11 @@ public class ProductDAOImpl extends GenericDaoHibernateImpl<Product,Long> implem
         TypedQuery<Product> namedQuery = entityManager.createNamedQuery("Product.getProducts", Product.class);
         return namedQuery.getResultList();
     }
-
+    public List<Product> getProducts(String collection){
+        TypedQuery<Product> namedQuery = entityManager.createNamedQuery("Product.getProductsInCollection", Product.class);
+        namedQuery.setParameter("collection",collection);
+        return namedQuery.getResultList();
+    }
     public Set<String> getBrands(){
         TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getBrands", String.class);
         return new HashSet<String>(namedQuery.getResultList());
@@ -29,4 +33,5 @@ public class ProductDAOImpl extends GenericDaoHibernateImpl<Product,Long> implem
         namedQuery.setParameter("brand",brand);
         return new HashSet<String>(namedQuery.getResultList());
     }
+
 }

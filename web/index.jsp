@@ -6,6 +6,7 @@
 </head>
 <body>
     <jsp:include page="navbar.html" flush="true"/><!-- навигация -->
+
     <div class="container"> <!-- левое меню +слайдер -->
     <div class ="col-lg-3 col-md-3 col-sm-4 col-xs-12" id="left_menu"><!-- левое меню -->
         <jsp:include page="menu_left.html" flush="true"/> <!-- левое меню -->
@@ -93,6 +94,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.js"></script>
+
 <script>
     $(function(){
         $('[data-toogle="tooltip"]').tooltip();

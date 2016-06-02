@@ -1,6 +1,5 @@
 package javaschool.testing;
 import javaschool.DAO.*;
-import javaschool.crud.ClientService;
 import javaschool.entity.*;
 import org.junit.Test;
 
@@ -11,6 +10,7 @@ public class test {
 
     ClientDAOImpl clientDAO = new ClientDAOImpl();
     OrdersDAOImpl ordersDAO = new OrdersDAOImpl();
+    ProductDAOImpl productDAO = new ProductDAOImpl();
     OrderProductDAOImpl orderProductDAO = new OrderProductDAOImpl();
     @Test
     public void testSaveRecord() throws Exception {
@@ -43,7 +43,8 @@ public class test {
 
         for(OrderProduct orderProduct : orderProductDAO.getOrderProduct((long)2))
         System.out.println("id продуктов во 2 заказе = " + orderProduct.getId());
-
+        System.out.println("------------");
+        System.out.println(productDAO.getProducts("aqua"));
     }
 
     public void testClientDAO() throws Exception {
