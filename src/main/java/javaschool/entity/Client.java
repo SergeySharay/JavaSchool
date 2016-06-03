@@ -1,7 +1,8 @@
 package javaschool.entity;
 
 import javax.persistence.*;
-import java.util.*;
+import java.sql.Date;
+import java.util.Set;
 
 @Entity
 @Table(name="clients", schema="client")
@@ -15,11 +16,19 @@ public class Client {
     private String surname;
     private String password;
     private Integer permission;
-    private Date birthday;
+    private java.sql.Date birthday;
     private Set<Orders> orders;
     private Set<ClientAdress> clientAdressSet;
 
     public Client(){
+    }
+
+    public Client(String email, String name, String surname, String password) {
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.permission = 2;
     }
 
     @Id

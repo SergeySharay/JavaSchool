@@ -1,17 +1,21 @@
 package javaschool.testing;
-import javaschool.DAO.*;
-import javaschool.entity.*;
-import org.junit.Test;
 
-import java.util.Date;
-import java.util.Iterator;
+import javaschool.dao.ClientDaoImpl;
+import javaschool.dao.OrderProductDaoImpl;
+import javaschool.dao.OrdersDaoImpl;
+import javaschool.dao.ProductDaoImpl;
+import javaschool.entity.ClientAdress;
+import javaschool.entity.OrderProduct;
+import javaschool.entity.Orders;
+import javaschool.entity.Product;
+import org.junit.Test;
 
 public class test {
 
-    ClientDAOImpl clientDAO = new ClientDAOImpl();
-    OrdersDAOImpl ordersDAO = new OrdersDAOImpl();
-    ProductDAOImpl productDAO = new ProductDAOImpl();
-    OrderProductDAOImpl orderProductDAO = new OrderProductDAOImpl();
+    ClientDaoImpl clientDAO = new ClientDaoImpl();
+    OrdersDaoImpl ordersDAO = new OrdersDaoImpl();
+    ProductDaoImpl productDAO = new ProductDaoImpl();
+    OrderProductDaoImpl orderProductDAO = new OrderProductDaoImpl();
     @Test
     public void testSaveRecord() throws Exception {
 /*
@@ -22,7 +26,7 @@ public class test {
         client1.setEmail("audi@tt.ru");
         client1.setBirthday(new Date());
         //Записали в БД
-        Client client = ClientDAOImpl.add(client1);
+        Client client = ClientDaoImpl.add(client1);
         //Вывели записанную в БД запись
         System.out.println(client1.getName() + client.getId());
         //clientDAO.get(client.getId());

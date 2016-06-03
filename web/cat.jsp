@@ -1,14 +1,13 @@
 <%@ page import="java.util.Set" %>
-<%@ page import="java.util.HashSet" %>
-<%@ page import="java.util.Iterator" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
-  <jsp:include page="haeder.html" flush="true"/><!-- header -->
+  <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
+  <title>Каталог</title>
 </head>
 <body>
 
-<jsp:include page="navbar.html" flush="true"/>
+<jsp:include page="WEB-INF/navbar.jsp" flush="true"/> <!-- навигация -->
 
 <div class="container">
 
