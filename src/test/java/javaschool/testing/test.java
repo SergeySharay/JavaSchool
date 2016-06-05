@@ -1,9 +1,6 @@
 package javaschool.testing;
 
-import javaschool.dao.ClientDaoImpl;
-import javaschool.dao.OrderProductDaoImpl;
-import javaschool.dao.OrdersDaoImpl;
-import javaschool.dao.ProductDaoImpl;
+import javaschool.dao.*;
 import javaschool.entity.ClientAdress;
 import javaschool.entity.OrderProduct;
 import javaschool.entity.Orders;
@@ -32,6 +29,7 @@ public class test {
         //clientDAO.get(client.getId());
             */
         //System.out.println(clientService.get((long) 2).getClientAdressSet());
+
         System.out.println("--------ordersDAO----------");
         System.out.println(ordersDAO.getOrders().size());
 
@@ -48,7 +46,12 @@ public class test {
         for(OrderProduct orderProduct : orderProductDAO.getOrderProduct((long)2))
         System.out.println("id продуктов во 2 заказе = " + orderProduct.getId());
         System.out.println("------------");
-        System.out.println(productDAO.getProducts("aqua"));
+        //System.out.println(productDAO.getProducts("aqua"));
+
+        System.out.println("--------CollectionDAO----------");
+       CollectionDaoImpl collectionDao = new CollectionDaoImpl();
+        System.out.println(collectionDao.getCollectionImage("Venis", "Aqua"));
+        //collectionDao.add(new Collection("Venis","Aqua","Aqua.jpg"));
     }
 
     public void testClientDAO() throws Exception {
@@ -64,6 +67,9 @@ public class test {
         for (Orders orders :clientDAO.get((long) 2).getOrders()){
             System.out.println(orders.getClient().getName());
         }
+
+
+
     }
 }
 

@@ -1,6 +1,5 @@
 package javaschool.entity;
 import javax.persistence.*;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +8,7 @@ import java.util.Set;
 @NamedQueries({
 
         @NamedQuery(name = "Product.getProducts", query = "SELECT P from Product P"),
-        @NamedQuery(name = "Product.getProductsInCollection", query = "SELECT P from Product P where P.collection= :collection"),
+        @NamedQuery(name = "Product.getProductsInCollection", query = "SELECT P from Product P where P.brand=:brand and P.collection= :collection"),
         @NamedQuery(name = "Product.getBrands", query = "SELECT P.brand from Product P"),
         @NamedQuery(name = "Product.getCollections", query = "SELECT P.collection from Product P where P.brand = :brand")
 
@@ -25,7 +24,7 @@ public class Product {
     private String picture;
     private Long price;
     private Long length;
-    private Long witdh;
+    private Long width;
     private Long weight;
     private Long quantity;
     private Set<Orders> orders= new HashSet<Orders>();
@@ -116,11 +115,11 @@ public class Product {
     }
 
     @Column(name="product_width", length = 10)
-    public Long getWitdh() {
-        return witdh;
+    public Long getWidth() {
+        return width;
     }
-    public void setWitdh(Long witdh) {
-        this.witdh = witdh;
+    public void setWidth(Long witdh) {
+        this.width = witdh;
     }
 
     @Column(name="product_weight", length = 10)

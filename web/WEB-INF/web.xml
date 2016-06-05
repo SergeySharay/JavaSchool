@@ -13,7 +13,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationServlet</servlet-name>
-        <url-pattern>/RegistrationServlet</url-pattern>
+        <url-pattern>/Registration</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -21,7 +21,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CollectionServlet</servlet-name>
+        <servlet-class>javaschool.servlets.CollectionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CollectionServlet</servlet-name>
+        <url-pattern>/Collection</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>CatalogServlet</servlet-name>
@@ -37,7 +45,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/LogoutServlet</url-pattern>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
 <session-config>
     <session-timeout>15</session-timeout>

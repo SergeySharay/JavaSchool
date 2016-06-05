@@ -14,10 +14,12 @@ public class CatalogServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 
         ProductDaoImpl productDAO = new ProductDaoImpl();
+        //ServletContext servletContex = req.getSession().getServletContext();
+
         req.setAttribute("brands",productDAO.getBrands());//передамем множество брендов
 
         for(String brand :productDAO.getBrands()){
-            req.setAttribute("colOf" + brand, productDAO.getCollections(brand)); //передаем множество коллекций в брендах
+            req.setAttribute(brand, productDAO.getCollections(brand)); //передаем множество коллекций в брендах
         }
 
         RequestDispatcher view = req.getRequestDispatcher("cat.jsp");

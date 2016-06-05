@@ -3,22 +3,19 @@ package javaschool.crud;
 import javaschool.dao.ClientDaoImpl;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-public class CheckCoockie{
-    private Cookie[] cookies;
+public class CheckCookie {
     public static String user_name="";
     private static String pass_word="";
-    public CheckCoockie(Cookie[] cookies){
-        this.cookies=cookies;
-    }
-    public static boolean check(Cookie[] cookies){
+    public static void check(HttpServletRequest request){
+        HttpSession session = request.getSession();
         ClientDaoImpl clientDao=new ClientDaoImpl();
         Map<String, String> userpass=clientDao.getClientEmailPassword();
-
-        boolean flag = false;
-        for(int i=0;i<cookies.length;i++){
-            Cookie cookie=cookies[i];
+        for(int i=0;i<request.getCookies().length;i++){
+            Cookie cookie=request.getCookies()[i];
             if(cookie.getName().equals("user_name")){
                 user_name=cookie.getValue();}
             if(cookie.getName().equals("pass_word")){
@@ -26,8 +23,7 @@ public class CheckCoockie{
         }
         if(userpass.containsKey(user_name))
             if(userpass.get(user_name).equals(pass_word))
-               flag=true;
+               session.setAttribute("CheckCookie","true");
 
-        return flag;
 }
 }

@@ -1,3 +1,4 @@
+<%@ page import="javaschool.dao.CollectionDaoImpl" %>
 <%@ page import="java.util.Set" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
@@ -6,64 +7,78 @@
   <title>Каталог</title>
 </head>
 <body>
-
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/> <!-- навигация -->
-
 <div class="container">
-
   <div class="row"><!-- хлебные крошки-->
     <div class="container">
       <ol class="breadcrumb">
         <li><a href="index.jsp">
           <i class="fa fa-home"></i>
         </a></li>
-        <li><a href="cat.jsp">Каталог товаров</a></li>
-        <li><a href="#">Категория</a></li>
-        <li class="active">Название</li>
+        <li><a href="Catalog">Каталог товаров</a></li>
+        <li class="active"><a href="Catalog">Бренды</a></li>
       </ol>
     </div><!-- хлебные крошки-->
   </div>
-
   <div class="container"> <!-- вкладки брендов -->
       <ul class="nav nav-tabs">
         <%
+          CollectionDaoImpl collectionDao = new CollectionDaoImpl();
           boolean flag = true;
           Set<String> brands = (Set<String>) request.getAttribute("brands");
           int i=1;
           for (String brand : brands) {
-
-            Set<String> collections = (Set<String>) request.getAttribute("colOf"+brand);
-            if(collections.size()>0){
-
-            if (flag){out.print("<li class=\"active\">");flag=false;}else out.print("<li>");
+            Set<String> collections = (Set<String>) request.getAttribute(brand);
+              if (flag){
+              out.print("<li class=\"active\">");
+              flag=false;
+            }else
+              out.print("<li>");
         %>
           <a href="#tab-<%out.print(i++);%>" data-toggle="tab">
           <% out.print(brand); %>
           <span class="badge">
           <% out.print(collections.size()); %>
           </span></a></li>
-        <% } }%>
+        <% } %>
        <!-- <li><a href="#">Бренд 2 <span class="badge">5</span></a></li>
         <li><a href="#">Бренд 3 <span class="badge">6</span></a></li> -->
         </ul>
-
     <div class="tab-content">
       <%
-        int j=1;
-        for (String brand2 : brands) {
+        boolean flag2 = true;
+        int i2=1;
+        for (String brand : brands) {
+          Set<String> collections = (Set<String>) request.getAttribute(brand);
+          if (flag2){
       %>
-        <div class="tab-pane in active" id="tab-<%out.print(j++);%>">
-        <p>тело <%out.print(j);%></p>
+        <div class="tab-pane fade in active" id="tab-<%
+        flag2=false;
+        }else {%>
+        <div class="tab-pane fade" id="tab-<%}
+              out.print(i2++ +"\">");%>
+       <div class="row masonry" data-columns>
+      <%for(String collection: collections){%>
+      <div class="item">
+        <div class="thumbnail">
+          <img src="../img/col/<%out.print(collectionDao.getCollectionImage(brand,collection));%>" alt="">
+          <div class="caption">
+            <form role="form" method="POST" action="Collection">
+            <p align="center">
+              <input type="submit" value="<%out.print(collection);%>" class="btn btn-primary">
+              <input type="hidden" name="Brand" value="<%out.print(brand);%>">
+              <input type="hidden" name="Collection" value="<%out.print(collection);%>">
+            </p></form>
+          </div>
         </div>
-        <%}%>
+      </div>
+      <%}%>
+        </div>
+        </div>
+      <%}%>
     </div>
-
-
-
       <hr>
-
   </div>
-
 
   <nav class="text-center">
     <ul class="pagination pagination-lg">
@@ -96,7 +111,6 @@
       </li>
     </ul>
   </nav><!-- вперёд\назад-->
-
   <nav> <!-- вперёд\назад-->
     <ul class="pager">
       <li class="previous"><a href="#">&larr; Назад</a></li>
@@ -104,7 +118,6 @@
     </ul>
   </nav><!-- вперёд\назад-->
 
-</div>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
