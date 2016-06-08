@@ -32,20 +32,79 @@ a.spoiler.collapsed:after{
 @media screen and (max-width: 767px){
     .masonry[data-columns]::before {
         content: '1 .col-xs-12';
+
+    }
+    .masonry2[data-columns]::before{
+        content: '1 .col-xs-12';
+    }
+    #inputtext{
+        width: 250px;
     }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
     .masonry[data-columns]::before{
         content: '2 .col-xs-6';
     }
+    .masonry2[data-columns]::before{
+        content: '2 .col-xs-6';
+    }
+    #inputtext{
+        width: 210px;
+    }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px){
     .masonry[data-columns]::before{
         content: '3 .col-xs-4';
     }
+    .masonry2[data-columns]::before{
+        content: '2 .col-xs-6';
+    }
+    #inputtext{
+        width: 320px;
+    }
+
 }
 @media screen and (min-width: 1200px){
     .masonry[data-columns]::before{
         content: '3 .col-xs-4';
     }
+    .masonry2[data-columns]::before{
+        content: '2 .col-xs-6';
+    }
+    #inputtext{
+        width: 410px;
+    }
+}
+#bucket{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    left:92.5%;
+    top:85%;
+    background-image: url("../img/bucket.png");
+}
+#order{
+    color: #333333;
+    background-color: #444;
+}
+.panel-body{
+    background: whitesmoke;
+}
+.table{
+    background: white;
+    color:#444;
+}
+.privatetable{
+    color: #333333;
+}
+.fieldset{
+    margin-left: 15px;
+}
+.control-group{
+    margin-left: 40px;
+    display: inline-block;
+    margin-right: 40px;
+}
+#textarea{
+    width: 100%;
 }

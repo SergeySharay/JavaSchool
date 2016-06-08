@@ -2,8 +2,8 @@ package javaschool.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.HashMap;
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="orders", schema="client")
@@ -35,7 +35,7 @@ public class Orders {
         this.id = id;
     }
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="client_id")
     public Client getClient() {
         return client;
@@ -44,7 +44,7 @@ public class Orders {
         this.client = client;
     }
 
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "order_product",
             joinColumns ={@JoinColumn(name="id_Order")},
             inverseJoinColumns={@JoinColumn(name="id_Product")})

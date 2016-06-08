@@ -8,9 +8,10 @@
 </head>
 <body>
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/> <!-- навигация -->
-<div class="container">
-  <div class="row"><!-- хлебные крошки-->
-    <div class="container">
+
+  <div class="container"><!-- хлебные крошки-->
+    <div class="row">
+      <div class="container">
       <ol class="breadcrumb">
         <li><a href="index.jsp">
           <i class="fa fa-home"></i>
@@ -19,9 +20,10 @@
         <li class="active"><a href="Catalog">Бренды</a></li>
       </ol>
     </div><!-- хлебные крошки-->
+    </div>
   </div>
   <div class="container"> <!-- вкладки брендов -->
-      <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs">
         <%
           CollectionDaoImpl collectionDao = new CollectionDaoImpl();
           boolean flag = true;
@@ -77,8 +79,8 @@
         </div>
       <%}%>
     </div>
-      <hr>
-  </div>
+  <hr>
+
 
   <nav class="text-center">
     <ul class="pagination pagination-lg">
@@ -118,6 +120,7 @@
     </ul>
   </nav><!-- вперёд\назад-->
 
+<div id="bucket"><a href="bucket.jsp"><img src="../img/bucket.png"></a></div>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -125,5 +128,6 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.js"></script>
 <script src="js/salvattore.min.js"></script>
+
 </body>
 </html>

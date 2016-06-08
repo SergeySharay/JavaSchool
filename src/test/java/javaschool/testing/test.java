@@ -7,12 +7,16 @@ import javaschool.entity.Orders;
 import javaschool.entity.Product;
 import org.junit.Test;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 public class test {
 
     ClientDaoImpl clientDAO = new ClientDaoImpl();
     OrdersDaoImpl ordersDAO = new OrdersDaoImpl();
     ProductDaoImpl productDAO = new ProductDaoImpl();
     OrderProductDaoImpl orderProductDAO = new OrderProductDaoImpl();
+
     @Test
     public void testSaveRecord() throws Exception {
 /*
@@ -33,41 +37,50 @@ public class test {
         System.out.println("--------ordersDAO----------");
         System.out.println(ordersDAO.getOrders().size());
 
-        for (Orders orders :ordersDAO.getOrders()){
+        for (Orders orders : ordersDAO.getOrders()) {
             System.out.println("Order id= " + orders.getId());
-           for(Product product : orders.getBucket())
-            System.out.println("Product name= " + product.getName());
+            for (Product product : orders.getBucket())
+                System.out.println("Product name= " + product.getName());
         }
         System.out.println("------------");
-        System.out.println("client 1 " + clientDAO.get((long)1).getName());
-        System.out.println("заказы 1 клиента" + ordersDAO.getClientOrders(clientDAO.get((long)1)));
+        System.out.println("client 1 " + clientDAO.get((long) 1).getName());
+        System.out.println("заказы 1 клиента" + ordersDAO.getClientOrders(clientDAO.get((long) 1)));
         System.out.println("------------");
 
-        for(OrderProduct orderProduct : orderProductDAO.getOrderProduct((long)2))
-        System.out.println("id продуктов во 2 заказе = " + orderProduct.getId());
+        for (OrderProduct orderProduct : orderProductDAO.getOrderProduct((long) 2))
+            System.out.println("id продуктов во 2 заказе = " + orderProduct.getId());
         System.out.println("------------");
         //System.out.println(productDAO.getProducts("aqua"));
 
         System.out.println("--------CollectionDAO----------");
-       CollectionDaoImpl collectionDao = new CollectionDaoImpl();
+        CollectionDaoImpl collectionDao = new CollectionDaoImpl();
         System.out.println(collectionDao.getCollectionImage("Venis", "Aqua"));
         //collectionDao.add(new Collection("Venis","Aqua","Aqua.jpg"));
-    }
+        System.out.println("--------ClientAdress----------");
+        ClientAdressDaoImpl clientAdressDao = new ClientAdressDaoImpl();
+        System.out.println(clientAdressDao.getAdress(clientDAO.get((long) 1)));
+        System.out.println("--------ClientDAO----------");
+        System.out.println(URLEncoder.encode("миша", "UTF-8"));
+        String str=URLEncoder.encode("миша", "UTF-8");
+        System.out.println(URLDecoder.decode(str,"UTF-8"));
+        System.out.println(URLEncoder.encode("2@2.2", "UTF-8"));
+        String str2=URLEncoder.encode("2@2.2", "UTF-8");
+        System.out.println(URLDecoder.decode(str2,"UTF-8"));
+        }
 
     public void testClientDAO() throws Exception {
         //выводим множество адресов
         System.out.println(clientDAO.get((long) 2).getClientAdressSet());
         //для каждого адреса выводим город
-        for (ClientAdress clientAdress :clientDAO.get((long) 2).getClientAdressSet()){
+        for (ClientAdress clientAdress : clientDAO.get((long) 2).getClientAdressSet()) {
             System.out.println(clientAdress.getCity());
         }
         //выводим заказы для 1 клиента
-        System.out.println(clientDAO.get((long)2).getOrders());
+        System.out.println(clientDAO.get((long) 2).getOrders());
         //выводим имя по номеру заказа
-        for (Orders orders :clientDAO.get((long) 2).getOrders()){
+        for (Orders orders : clientDAO.get((long) 2).getOrders()) {
             System.out.println(orders.getClient().getName());
         }
-
 
 
     }

@@ -24,6 +24,7 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
         entityManager.getTransaction().begin();
         entityManager.remove(get(id));
         entityManager.getTransaction().commit();
+
     }
     public T get(PK id){
         return entityManager.find(type, id);
@@ -32,7 +33,6 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
         entityManager.getTransaction().begin();
         entityManager.merge(object);
         entityManager.getTransaction().commit();
-
-    }
+            }
 
 }

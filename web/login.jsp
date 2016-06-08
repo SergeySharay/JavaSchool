@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8"%>
 <html>
 <head>
   <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
@@ -16,7 +16,7 @@
           <h3 class="panel-title">Введите Ваши данные</h3>
         </div>
         <div class="panel-body">
-          <form role="form" method="POST" action="LoginServlet">
+          <form role="form" method="POST" action="Login">
               <div class="form-group">
               <input type="email" name="user_name" id="email" class="form-control input-sm" placeholder="Email">
               </div>
@@ -31,6 +31,6 @@
     </div>
   </div>
 </div>
-
+<script src="js/bootstrap.js"></script>
 </body>
 </html>

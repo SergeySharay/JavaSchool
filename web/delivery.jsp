@@ -10,5 +10,6 @@
 <div class="container"><!--footer-->
   <jsp:include page="WEB-INF/footer.html" flush="true"/><!--footer-->
 </div><!--footer-->
+<script src="js/bootstrap.js"></script>
 </body>
 </html>

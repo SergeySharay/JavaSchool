@@ -1,13 +1,15 @@
 package javaschool.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Table(name="clients", schema="client")
-@NamedQuery(name="Client.getClients",query = "SELECT C from Client C")
-
+@NamedQueries({
+        @NamedQuery(name = "Client.getClients", query = "SELECT C from Client C"),
+        @NamedQuery(name = "Client.getClient", query = "SELECT C from Client C where C.email =:email")
+})
 public class Client {
 
     private Long clientId;
@@ -16,7 +18,7 @@ public class Client {
     private String surname;
     private String password;
     private Integer permission;
-    private java.sql.Date birthday;
+    private Date birthday;
     private Set<Orders> orders;
     private Set<ClientAdress> clientAdressSet;
 

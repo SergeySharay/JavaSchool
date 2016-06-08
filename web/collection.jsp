@@ -50,25 +50,27 @@
     <%for(Product product: (List<Product>)request.getAttribute("ProductsInCollection")){%>
     <div class="item">
       <div class="thumbnail">
-        <img src="../img/col/<%out.print("noPhoto.jpg");%>" alt="">
+        <img src="../img/pic/<%out.print("noPhoto.jpg");%>" alt="">
         <div class="caption">
-          <form role="form" method="POST" action="Collection">
+          <form role="form" method="POST" action="Order">
             <p align="center">
-            <%out.print(product.getName());%>
+            <%=product.getName()%>
+            </p>
+            <p align="right">
+              <input type="submit" value="Купить" class="btn btn-primary buyitem">
+              <input type="hidden" name="Brand" value="<%=request.getParameter("Brand")%>">
+              <input type="hidden" name="Collection" value="<%=request.getParameter("Collection")%>">
+              <%session.setAttribute("Product", product.getId());%>
+              <input type="hidden" name="Product" value="<%=session.getAttribute("Product")%>">
             </p></form>
         </div>
       </div>
     </div>
     <%}%>
   </div>
-
-
 </div>
 
-
-
-
-
+<div id="bucket"><a href="bucket.jsp"><img src="../img/bucket.png"></a></div>
 
 <nav class="text-center">
   <ul class="pagination pagination-lg">

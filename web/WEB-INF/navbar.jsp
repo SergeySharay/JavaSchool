@@ -1,5 +1,5 @@
 <%@ page import="javaschool.crud.CheckCookie" %>
-<%@ page contentType="text/html;charset=utf-8" language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=utf-8" language="java" pageEncoding="UTF-8" %>
 <div id="navbar_menu">
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="container">
@@ -19,17 +19,19 @@
                     <li><a href="../contacts.jsp">Контакты</a></li>
                     <li><a href="../delivery.jsp">Доставка</a></li>
                     <li><a href="../pay.jsp">Оплата</a></li>
-
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <%
                         CheckCookie.check(request);
                         HttpSession httpSession = request.getSession();
-                        if(httpSession.getAttribute("CheckCookie")=="true"){
+                        if (httpSession.getAttribute("CheckCookie") == "true") {
                     %>
-                    <li><a href="../index.jsp"><i class="glyphicon glyphicon-user"></i>
+                    <li><a href="Cabinet"><i class="glyphicon glyphicon-user"></i>
                         <%out.print(CheckCookie.user_name);%></a></li>
-                        <li><a href="LogoutServlet">Выйти</a></li>
-                    <%}else{%><li><a href="../login.jsp">Регистрация / Вход</a></li><%}%>
-
+                    <li><a href="Logout"><i class="glyphicon glyphicon-off"></i> Выйти</a></li>
+                    <%} else {%>
+                    <li><a href="../login.jsp">Регистрация / Вход</a></li>
+                    <%}%>
                 </ul>
             </div>
         </div>

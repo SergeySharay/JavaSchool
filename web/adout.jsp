@@ -40,5 +40,8 @@
 </div>
 
 <jsp:include page="WEB-INF/footer.html" flush="true"/> <!--footer-->
+
+<script src="js/bootstrap.js"></script>
+
 </body>
 </html>
