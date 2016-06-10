@@ -3,7 +3,6 @@ package javaschool.servlets;
 import javaschool.dao.ClientDaoImpl;
 import javaschool.entity.Client;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class PrivateServlet extends HttpServlet {
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        }
+
+        public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         HttpSession httpSession = req.getSession();
         DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
@@ -42,9 +45,7 @@ public class PrivateServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
         clientDao.update(client);
-        RequestDispatcher view = req.getRequestDispatcher("private.jsp");
-        view.forward(req, resp);
+            resp.sendRedirect("Cabinet");
     }
 }

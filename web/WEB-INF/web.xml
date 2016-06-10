@@ -7,6 +7,15 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    AdminOrderPageServlet
+    <servlet>
+        <servlet-name>AdminOrderPageServlet</servlet-name>
+        <servlet-class>javaschool.servlets.AdminOrderPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminOrderPageServlet</servlet-name>
+        <url-pattern>/AdminOrderPage</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>AdminProductsServlet</servlet-name>
         <servlet-class>javaschool.servlets.AdminProductsServlet</servlet-class>

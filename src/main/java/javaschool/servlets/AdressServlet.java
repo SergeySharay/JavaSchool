@@ -4,7 +4,6 @@ import javaschool.dao.ClientAdressDaoImpl;
 import javaschool.entity.Client;
 import javaschool.entity.ClientAdress;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +40,6 @@ public class AdressServlet extends HttpServlet {
         }
 
         clientAdressDao.update(clientAdress);
-        RequestDispatcher view = req.getRequestDispatcher("adress.jsp");
-        view.forward(req, resp);
+        resp.sendRedirect("Cabinet");
     }
 }

@@ -7,11 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 public class CheckCookie {
     public static String user_name = "";
     private static String pass_word = "";
+
 
     public static void check(HttpServletRequest request) throws UnsupportedEncodingException {
         HttpSession session = request.getSession();
@@ -33,8 +36,11 @@ public class CheckCookie {
                 session.setAttribute("User", clientDao.getClient(user_name));
 
             }
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        session.setAttribute("format",format);
        // if (session.getAttribute("Order") == null) {
         //    session.setAttribute("Order", new HashMap<Long, Integer>());
         //}
     }
+
 }

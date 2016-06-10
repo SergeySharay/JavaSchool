@@ -1,4 +1,6 @@
 <%@ page import="javaschool.entity.Orders" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -24,11 +26,11 @@
                     <th>Номер заказа</th>
                     <th>Клиент</th>
                     <th>Оплата</th>
-                    <td>Доставка</td>
-                    <td>Статус оплаты</td>
-                    <td>Статус заказа</td>
-                    <td>Дата заказа</td>
-                    <td>Дополнительно</td>
+                    <th>Доставка</th>
+                    <th>Статус оплаты</th>
+                    <th>Статус заказа</th>
+                    <th>Дата заказа</th>
+                    <th>Дополнительно</th>
                 </tr>
                 <%
                     for (Orders orders : (List<Orders>) session.getAttribute("ordersList")) {
@@ -47,9 +49,10 @@
                     </td>
                     <td><%=orders.getOrderStatus()%>
                     </td>
-                    <td><%=orders.getOrderDate()%>
+                    <td><%DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+                        out.print(format.format(orders.getOrderDate()));%>
                     </td>
-                    <td><form method="get" action="AdminOrders">
+                    <td><form method="get" action="AdminOrderPage">
                         <input type="submit" value="Подробнее">
                         <input type="hidden" name="orderId" value="<%=orders.getId()%>"></form></td>
                         <%}%>

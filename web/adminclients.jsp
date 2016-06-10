@@ -1,4 +1,6 @@
 <%@ page import="javaschool.entity.Client" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -23,11 +25,11 @@
         <tr>
         <th>Id</th>
         <th>Имя</th>
-         <td>Фамилия</td>
-          <td>Почта</td>
-          <td>Дата рождения</td>
-          <td>Статус клиента</td>
-          <td>Изменить полномочия</td>
+         <th>Фамилия</th>
+          <th>Почта</th>
+          <th>Дата рождения</th>
+          <th>Статус клиента</th>
+          <th>Изменить полномочия</th>
         </tr>
       <%for(Client client: (List<Client>)session.getAttribute("clientList")) {
         %>
@@ -36,7 +38,9 @@
           <td><%=client.getName()%></td>
           <td><%=client.getSurname()%></td>
           <td><%=client.getEmail()%></td>
-          <td><%=client.getBirthday()%></td>
+          <td><% DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+            if (client.getBirthday()==null) out.print("Отсутсвует"); else
+            out.print(format.format(client.getBirthday()));%></td>
           <td><%=client.getPermission()%></td>
           <td><form method="get" action="AdminClients">
             <input type="submit" value="изменить">
