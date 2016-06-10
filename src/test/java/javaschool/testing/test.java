@@ -2,9 +2,7 @@ package javaschool.testing;
 
 import javaschool.dao.*;
 import javaschool.entity.ClientAdress;
-import javaschool.entity.OrderProduct;
 import javaschool.entity.Orders;
-import javaschool.entity.Product;
 import org.junit.Test;
 
 import java.net.URLDecoder;
@@ -37,19 +35,15 @@ public class test {
         System.out.println("--------ordersDAO----------");
         System.out.println(ordersDAO.getOrders().size());
 
-        for (Orders orders : ordersDAO.getOrders()) {
-            System.out.println("Order id= " + orders.getId());
-            for (Product product : orders.getBucket())
-                System.out.println("Product name= " + product.getName());
-        }
+
         System.out.println("------------");
         System.out.println("client 1 " + clientDAO.get((long) 1).getName());
         System.out.println("заказы 1 клиента" + ordersDAO.getClientOrders(clientDAO.get((long) 1)));
         System.out.println("------------");
 
-        for (OrderProduct orderProduct : orderProductDAO.getOrderProduct((long) 2))
-            System.out.println("id продуктов во 2 заказе = " + orderProduct.getId());
-        System.out.println("------------");
+        //for (OrderProduct orderProduct : orderProductDAO.getOrderProduct((long) 2))
+        //    System.out.println("id продуктов во 2 заказе = " + orderProduct.getId());
+        //System.out.println("------------");
         //System.out.println(productDAO.getProducts("aqua"));
 
         System.out.println("--------CollectionDAO----------");

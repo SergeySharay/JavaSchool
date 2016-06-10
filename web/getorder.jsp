@@ -1,20 +1,20 @@
 <%@ page import="javaschool.dao.ProductDaoImpl" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="windows-1251"%>
 <html>
 <head>
     <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
-    <title>РћС„РѕСЂРјР»РµРЅРёРµ Р·Р°РєР°Р·Р°></title>
+    <title>Оформление заказа></title>
 </head>
 <body>
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/>
-<!-- РЅР°РІРёРіР°С†РёСЏ -->
+<!-- навигация -->
 <div class="container">
     <div class="row masonry2" data-columns>
         <div class="item">
             <div class="panel panel-default">
-                <div class="panel-heading"><p>РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р·Р°РєР°Р·Рµ</p></div>
+                <div class="panel-heading"><p>Информация о заказе</p></div>
                 <div class="panel-body privatetable">
                     <%
                         Float sum = 0f;
@@ -23,129 +23,125 @@
                         for (Map.Entry entry : products.entrySet())
                             sum += (productDao.get((Long) entry.getKey()).getPrice() * (Integer) entry.getValue());
                     %>
-                    <p>Р’Р°С€ Р·Р°РєР°Р· РЅР° СЃСѓРјРјСѓ, СЂСѓР±Р»РµР№: <%=sum%>
+                    <p>Ваш заказ на сумму, рублей: <%=sum%>
                     </p>
 
-                    <p>Р’СЃРµРіРѕ РїРѕР·РёС†РёР№ РІ Р·Р°РєР°Р·Рµ, С€С‚: <%=products.size()%>
+                    <p>Всего позиций в заказе, шт: <%=products.size()%>
                     </p>
 
                     <form action="bucket.jsp">
-                        <button type="submit" value="" class="btn btn-primary">РР·РјРµРЅРёС‚СЊ Р·Р°РєР°Р·</button>
+                        <button type="submit" value="" class="btn btn-primary">Изменить заказ</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="item">
-
             <div class="panel panel-default">
-                <div class="panel-heading"><p>РРЅС„РѕСЂРјР°С†РёСЏ РґР»СЏ Р·Р°РєР°Р·Р°</p></div>
+                <div class="panel-heading"><p>Информация для заказа</p></div>
                 <div class="panel-body privatetable">
-                    <fieldset class="fieldset">
-                        <div class="control-group">
-                            <label class="control-label">РћРїР»Р°С‚Р°</label>
+                    <form id="nextorder" action="GetOrder" method="Post">
+                        <fieldset class="fieldset">
+                            <div class="control-group">
+                                <label class="control-label">Оплата</label>
 
-                            <div class="controls" id="pay">
-                                <label class="radio">
-                                    <input type="radio" name="Rad1" id="optionsRadios1" value="option1" checked="">
-                                    РќР°Р»РёС‡РЅС‹Рµ
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="Rad1" id="optionsRadios2" value="option2">
-                                    Р‘РµР·РЅР°Р»РёС‡РЅС‹Р№ СЂР°СЃС‡РµС‚
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="Rad1" id="optionsRadios3" value="option2">
-                                    РћРїР»Р°С‚Р° РєР°СЂС‚РѕР№
-                                </label>
+                                <div class="controls" id="pay">
+                                    <label class="radio">
+                                        <input type="radio" name="Rad1" id="optionsRadios1" value="Наличные" checked="">
+                                        Наличные
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="Rad1" id="optionsRadios2" value="Безналичный расчет">
+                                        Безналичный расчет
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="Rad1" id="optionsRadios3" value="Оплата картой">
+                                        Оплата картой
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">РџРѕР»СѓС‡РµРЅРёРµ</label>
+                            <div class="control-group">
+                                <label class="control-label">Получение</label>
 
-                            <div class="controls" id="delivery">
-                                <label class="radio">
-                                    <input type="radio" name="Rad2" id="optionsRadios4" value="option1" checked="">
-                                    РЎР°РјРѕРІС‹РІРѕР·
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="Rad2" id="optionsRadios5" value="option2">
-                                    Р”РѕСЃС‚Р°РІРєР°
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="Rad2" id="optionsRadios6" value="option2">
-                                    РџРµСЂРµРјРµС‰РµРЅРёРµ
-                                </label>
+                                <div class="controls" id="delivery">
+                                    <label class="radio">
+                                        <input type="radio" name="Rad2" id="optionsRadios4" value="Самовывоз" checked="">
+                                        Самовывоз
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="Rad2" id="optionsRadios5" value="Доставка">
+                                        Доставка
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="Rad2" id="optionsRadios6" value="Перемещение">
+                                        Перемещение
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="control-group">
-                            <label class="control-label" id="inputtext" for="textarea">Р’Р°С€ РєРѕРјРјРµРЅС‚Р°СЂРёР№ Рє Р·Р°РєР°Р·Сѓ</label>
+                            <hr>
+                            <div class="control-group">
+                                <label class="control-label" id="inputtext" for="textarea">Ваш комментарий к
+                                    заказу</label>
 
-                            <div class="controls">
-                                <textarea class="input" id="textarea" rows="3"></textarea>
+                                <div class="controls">
+                                    <textarea class="input" name="Rad3" id="textarea" rows="3"></textarea>
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
-
         </div>
         <div class="item">
             <div class="panel panel-default">
-                <div class="panel-heading"><p>РђРґСЂРµСЃ РґРѕСЃС‚Р°РІРєРё</p></div>
+                <div class="panel-heading"><p>Адрес доставки</p></div>
                 <div class="panel-body privatetable">
                     <table class="table">
                         <%List<String> adressAtributes = (List<String>) session.getAttribute("clienAdressAtributes");%>
                         <tr>
-                            <td>РЎС‚СЂР°РЅР°</td>
+                            <td>Страна</td>
                             <td><%=adressAtributes.get(0)%>
                             </td>
                         </tr>
                         <tr>
-                            <td>Р“РѕСЂРѕРґ</td>
+                            <td>Город</td>
                             <td><%=adressAtributes.get(1)%>
                             </td>
                         </tr>
                         <tr>
-                            <td>РЈР»РёС†Р°</td>
+                            <td>Улица</td>
                             <td><%=adressAtributes.get(2)%>
                             </td>
                         </tr>
                         <tr>
-                            <td>Р”РѕРј</td>
+                            <td>Дом</td>
                             <td><%=adressAtributes.get(3)%>
                             </td>
                         </tr>
                         <tr>
-                            <td>РљРІР°СЂС‚РёСЂР°</td>
+                            <td>Квартира</td>
                             <td><%=adressAtributes.get(4)%>
                             </td>
                         </tr>
                         <tr>
-                            <td>РџРѕС‡С‚РѕРІС‹Р№ РёРЅРґРµРєСЃ</td>
+                            <td>Почтовый индекс</td>
                             <td><%=adressAtributes.get(5)%>
                             </td>
                         </tr>
                     </table>
                     <form action="adress.jsp">
-                        <button type="submit" value="" class="btn btn-primary">РР·РјРµРЅРёС‚СЊ Р°РґСЂРµСЃ</button>
+                        <button type="submit" value="" class="btn btn-primary">Изменить адрес</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="item">
             <div class="panel panel-default">
-                <div class="panel-heading"><p>РџРѕРґРІРµСЂР¶РґРµРЅРёРµ Р·Р°РєР°Р·Р°</p></div>
+                <div class="panel-heading"><p>Подверждение заказа</p></div>
                 <div class="panel-body privatetable">
-                    <form action="bucket.jsp">
-                        <button type="submit" value="" class="btn btn-primary">РћС„РѕСЂРјРёС‚СЊ Р·Р°РєР°Р·</button>
-                    </form>
+                    <button type="submit" form="nextorder" class="btn btn-primary">Оформить заказ</button>
                 </div>
-
-
             </div>
         </div>
-
     </div>
 </div>
 <script src="js/bootstrap.js"></script>

@@ -1,47 +1,55 @@
 package javaschool.entity;
 
 
-import sun.rmi.runtime.Log;
-
 import javax.persistence.*;
 
 
-
 @Entity
-@Table(name="order_product", schema="client")
-@NamedQuery(name="OrderProduct.getOrderProducts",query = "SELECT O from OrderProduct O where idOrder=:order")
+@Table(name = "order_product", schema = "client")
+@NamedQuery(name = "OrderProduct.getOrderProducts", query = "SELECT O from OrderProduct O where orderId=:order")
 
 public class OrderProduct {
-    private Long id;
-    private Long idOrder;
-    private Long idProduct;
+    private Long Id;
+    private Orders orderId;
+    private Product productId;
+    private Long quantity;
 
     public OrderProduct() {
     }
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", length = 10, unique = true)
+    @Column(name="id", length = 10)
     public Long getId() {
-        return id;
+        return Id;
     }
     public void setId(Long id) {
-        this.id = id;
+        Id = id;
     }
 
-    @Column(name="id_Order", length = 10)
-    public Long getIdOrder() {
-        return idOrder;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public Orders getOrderId() {
+        return orderId;
     }
-    public void setIdOrder(Long idOrder) {
-        this.idOrder = idOrder;
+    public void setOrderId(Orders orderId) {
+        this.orderId = orderId;
     }
 
-    @Column(name="id_Product", length = 10)
-    public Long getIdProduct() {
-        return idProduct;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public Product getProductId() {
+        return productId;
     }
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
+    public void setProductId(Product productId) {
+        this.productId = productId;
     }
+
+    @Column(name = "quantity", length = 10)
+    public Long getQuantity() {
+        return quantity;
+    }
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
+
 }

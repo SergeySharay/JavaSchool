@@ -8,6 +8,38 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     <servlet>
+        <servlet-name>AdminProductsServlet</servlet-name>
+        <servlet-class>javaschool.servlets.AdminProductsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminProductsServlet</servlet-name>
+        <url-pattern>/AdminProducts</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminOrdersServlet</servlet-name>
+        <servlet-class>javaschool.servlets.AdminOrdersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminOrdersServlet</servlet-name>
+        <url-pattern>/AdminOrders</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminClientsServlet</servlet-name>
+        <servlet-class>javaschool.servlets.AdminClientsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminClientsServlet</servlet-name>
+        <url-pattern>/AdminClients</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>HistoryServlet</servlet-name>
+        <servlet-class>javaschool.servlets.HistoryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HistoryServlet</servlet-name>
+        <url-pattern>/History</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>GetOrderServlet</servlet-name>
         <servlet-class>javaschool.servlets.GetOrderServlet</servlet-class>
     </servlet>

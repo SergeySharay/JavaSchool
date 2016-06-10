@@ -4,7 +4,7 @@
 <html>
 <head>
     <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
-    <title>Корзина></title>
+    <title>Корзина</title>
 </head>
 <body>
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/>
@@ -63,15 +63,21 @@
             <p><%
                 if (session.getAttribute("CheckCookie") == "true") {
                     if (sum > 0) {
-            %>  <form method="get" action="GetOrder" id="getorder"></form>
-                <button type="submit" form="getorder" class="btn btn-primary">Оформить заказ</button>
+                        if (session.getAttribute("clienAdressAtributes")==null){%>
+
+            <form method="get" action="Cabinet" id="getcab"></form>
+            <button type="submit" form="getcab" class="btn btn-primary">Проверить данные</button>
+
+            <%
+            } else {
+            %>
+            <form method="get" action="../getorder.jsp" id="getorder"></form>
+            <button type="submit" form="getorder" class="btn btn-primary">Оформить заказ</button>
                 <%
-                        } else {
+                        }} else {
                             out.print("Для того что бы оформить заказ, необходимо добавить товары в корзину");
                         }
-                    } else {
-                        out.print("Для того что бы оформить заказ, необходимо зарегистрироваться или войти в аккаунт");
-                    }
+                    } else {out.print("Для того что бы оформить заказ, необходимо зарегистрироваться или войти в аккаунт");}
                 %></p>
         </div>
     </div>

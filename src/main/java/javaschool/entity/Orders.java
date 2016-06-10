@@ -1,7 +1,7 @@
 package javaschool.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -21,7 +21,7 @@ public class Orders {
     private String paymentStatus;
     private String orderStatus;
     private Date orderDate;
-    private Set <Product> bucket= new LinkedHashSet<Product>();
+    private Set <OrderProduct> bucket= new LinkedHashSet<OrderProduct>();
 
     public Orders() {
     }
@@ -44,14 +44,16 @@ public class Orders {
         this.client = client;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "order_product",
-            joinColumns ={@JoinColumn(name="id_Order")},
-            inverseJoinColumns={@JoinColumn(name="id_Product")})
-    public Set<Product> getBucket() {
+    //@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@JoinTable(name = "order_product",
+    //        joinColumns ={@JoinColumn(name="id_Order")},
+    //        inverseJoinColumns={@JoinColumn(name="id_Product")})
+
+    @OneToMany(targetEntity=OrderProduct.class, mappedBy="orderId", fetch= FetchType.EAGER)
+    public Set<OrderProduct> getBucket() {
         return bucket;
     }
-    public void setBucket(Set<Product> bucket) {
+    public void setBucket(Set<OrderProduct> bucket) {
         this.bucket = bucket;
     }
 

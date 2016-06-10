@@ -27,7 +27,7 @@ public class Product {
     private Long width;
     private Long weight;
     private Long quantity;
-    private Set<Orders> orders= new HashSet<Orders>();
+    private Set<OrderProduct> orderProduct= new HashSet<OrderProduct>();
 
     public Product() {
     }
@@ -42,12 +42,12 @@ public class Product {
         this.id = id;
     }
 
-    @ManyToMany(mappedBy = "bucket")
-    public Set<Orders> getOrders() {
-        return orders;
+    @OneToMany(targetEntity=OrderProduct.class, mappedBy="productId", fetch = FetchType.LAZY)
+    public Set<OrderProduct> getOrderProduct() {
+        return orderProduct;
     }
-    public void setOrders(Set<Orders> orders) {
-        this.orders = orders;
+    public void setOrderProduct(Set<OrderProduct> orderProduct) {
+        this.orderProduct = orderProduct;
     }
 
     @Column(name="product_category", length = 100)

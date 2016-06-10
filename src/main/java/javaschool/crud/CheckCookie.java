@@ -31,7 +31,10 @@ public class CheckCookie {
             if (userpass.get(user_name).equals(pass_word)) {
                 session.setAttribute("CheckCookie", "true");
                 session.setAttribute("User", clientDao.getClient(user_name));
-            }
 
+            }
+       // if (session.getAttribute("Order") == null) {
+        //    session.setAttribute("Order", new HashMap<Long, Integer>());
+        //}
     }
 }
