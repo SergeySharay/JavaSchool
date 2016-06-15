@@ -12,8 +12,11 @@ import java.io.IOException;
 public class CollectionServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductDaoImpl productDao = new ProductDaoImpl();
+
         req.setAttribute("Collections",productDao.getCollections(req.getParameter("Brand")));
         req.setAttribute("ProductsInCollection",productDao.getProducts(req.getParameter("Brand"), req.getParameter("Collection")));
+        req.setAttribute("Brand",req.getParameter("Brand"));
+        req.setAttribute("Collection",req.getParameter("Collection"));
         RequestDispatcher view = req.getRequestDispatcher("collection.jsp");
         view.forward(req,resp);
     }

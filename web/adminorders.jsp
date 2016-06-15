@@ -1,7 +1,4 @@
-<%@ page import="javaschool.entity.Orders" %>
-<%@ page import="java.text.DateFormat" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -32,30 +29,23 @@
                     <th>Дата заказа</th>
                     <th>Дополнительно</th>
                 </tr>
-                <%
-                    for (Orders orders : (List<Orders>) session.getAttribute("ordersList")) {
-                %>
-                <tr>
-                    <td><%=orders.getId()%>
-                    </td>
-                    <td><%=orders.getClient().getName()%>
-                        <%=orders.getClient().getSurname()%>
-                    </td>
-                    <td><%=orders.getPayment()%>
-                    </td>
-                    <td><%=orders.getDelivery()%>
-                    </td>
-                    <td><%=orders.getPaymentStatus()%>
-                    </td>
-                    <td><%=orders.getOrderStatus()%>
-                    </td>
-                    <td><%DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-                        out.print(format.format(orders.getOrderDate()));%>
-                    </td>
-                    <td><form method="get" action="AdminOrderPage">
-                        <input type="submit" value="Подробнее">
-                        <input type="hidden" name="orderId" value="<%=orders.getId()%>"></form></td>
-                        <%}%>
+                <c:forEach items="${ordersList}" var="orders">
+                    <tr>
+                        <td><c:out value="${orders.id}"/></td>
+                        <td><c:out value="${orders.client.name}"/>
+                            <c:out value="${orders.client.surname}"/></td>
+                        <td><c:out value="${orders.payment}"/></td>
+                        <td><c:out value="${orders.delivery}"/></td>
+                        <td><c:out value="${orders.paymentStatus}"/></td>
+                        <td><c:out value="${orders.orderStatus}"/></td>
+                        <td><c:out value="${format.format(orders.orderDate)}"/></td>
+                        <td>
+                            <form method="get" action="AdminOrderPage">
+                                <input type="submit" value="Подробнее">
+                                <input type="hidden" name="orderId" value="<c:out value="${orders.id}"/>"></form>
+                        </td>
+                    </tr>
+                </c:forEach>
             </table>
         </div>
     </div>

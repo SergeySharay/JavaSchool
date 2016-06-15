@@ -1,116 +1,70 @@
-<%@ page import="javaschool.entity.Product" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Set" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
-  <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
-  <title>Каталог</title>
+    <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
+    <title>Каталог</title>
 </head>
 <body>
-<jsp:include page="WEB-INF/navbar.jsp" flush="true"/> <!-- навигация -->
+<jsp:include page="WEB-INF/navbar.jsp" flush="true"/>
+<!-- навигация -->
 <div class="container">
     <div class="row"><!-- хлебные крошки-->
-    <div class="container">
-      <ol class="breadcrumb">
-        <li><a href="index.jsp">
-          <i class="fa fa-home"></i>
-        </a></li>
-        <li><a href="Catalog">Каталог товаров</a></li>
-        <li><a href="Catalog"><%out.print(request.getParameter("Brand"));%></a></li>
-        <li class="active"><a href="#">
-          <%out.print(request.getParameter("Collection"));%>
-        </a></li>
-
-      </ol>
-    </div><!-- хлебные крошки-->
-  </div>
-
-    <div class="row">
-      <div class="container">
-          <div class="row">
-            <%
-          for(String collection: (Set<String>)request.getAttribute("Collections")){
-            %>
-              <form role="form" method="POST" action="Collection" class="btn">
-              <input type="submit" value="<%out.print(collection);%>" class="btn btn-primary">
-              <input type="hidden" name="Brand" value="<%out.print(request.getParameter("Brand"));%>">
-              <input type="hidden" name="Collection" value="<%out.print(collection);%>">
-                </form>
-
-          <%}%>
-          </div>
-      </div><!-- хлебные крошки-->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="index.jsp">
+                    <i class="fa fa-home"></i>
+                </a></li>
+                <li><a href="Catalog">Каталог товаров</a></li>
+                <li><a href="Catalog?Brands=<c:out value="${Brand}"/>"><c:out value="${Brand}"/></a></li>
+                <li class="active"><a href="#"><c:out value="${Collection}"/></a></li>
+            </ol>
+        </div>
+        <!-- хлебные крошки-->
     </div>
-
-  <hr>
+    <!-- хлебные крошки-->
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <c:forEach items="${Collections}" var="collection">
+                    <form role="form" method="POST" action="Collection" class="btn">
+                        <input type="submit" value="<c:out value="${collection}"/>" class="btn btn-primary">
+                        <input type="hidden" name="Brand" value="<c:out value="${Brand}"/>">
+                        <input type="hidden" name="Collection" value="<c:out value="${collection}"/>">
+                    </form>
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+    <hr>
 </div>
 <div class="container">
-  <div class="row masonry" data-columns>
-    <%for(Product product: (List<Product>)request.getAttribute("ProductsInCollection")){%>
-    <div class="item">
-      <div class="thumbnail">
-        <img src="../img/pic/<%out.print("noPhoto.jpg");%>" alt="">
-        <div class="caption">
-          <form role="form" method="POST" action="Order">
-            <p align="center">
-            <%=product.getName()%>
-            </p>
-            <p align="right">
-              <input type="submit" value="Купить" class="btn btn-primary buyitem">
-              <input type="hidden" name="Brand" value="<%=request.getParameter("Brand")%>">
-              <input type="hidden" name="Collection" value="<%=request.getParameter("Collection")%>">
-              <%session.setAttribute("Product", product.getId());%>
-              <input type="hidden" name="Product" value="<%=session.getAttribute("Product")%>">
-            </p></form>
-        </div>
-      </div>
+    <div class="row masonry" data-columns>
+        <c:forEach items="${ProductsInCollection}" var="product">
+            <div class="item">
+                <div class="thumbnail">
+                    <img src="../img/pic/<c:out value="${product.id}"/>.jpg" alt="">
+
+                    <div class="caption">
+                        <form role="form" method="POST" action="Order">
+                            <p align="center">
+                                <c:out value="${product.name}"/>
+                            </p>
+
+                            <p align="right">
+                                <input type="submit" value="Купить" class="btn btn-primary buyitem">
+                                <input type="hidden" name="Brand" value="<c:out value="${Brand}"/>">
+                                <input type="hidden" name="Collection" value="<c:out value="${Collection}"/>">
+                                <input type="hidden" name="Product" value="<c:out value="${product.id}"/>">
+                            </p></form>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
-    <%}%>
-  </div>
 </div>
 
 <div id="bucket"><a href="bucket.jsp"><img src="../img/bucket.png"></a></div>
-
-<nav class="text-center">
-  <ul class="pagination pagination-lg">
-    <li class="disabled">
-      <a href="#">
-        <i class="fa fa-chevron-left"></i>
-        <i class="fa fa-chevron-left"></i>
-      </a>
-    </li>
-    <li class="disabled">
-      <a href="#">
-        <i class="fa fa-chevron-left"></i>
-      </a>
-    </li>
-    <li class="active"><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li>
-      <a href="#">
-        <i class="fa fa-chevron-right"></i>
-
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <i class="fa fa-chevron-right"></i>
-        <i class="fa fa-chevron-right"></i>
-      </a>
-    </li>
-  </ul>
-</nav><!-- вперёд\назад-->
-<nav> <!-- вперёд\назад-->
-  <ul class="pager">
-    <li class="previous"><a href="#">&larr; Назад</a></li>
-    <li class="next disabled"><a href="#">Вперёд &rarr;</a></li>
-  </ul>
-</nav><!-- вперёд\назад-->
-
-
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

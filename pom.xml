@@ -7,13 +7,17 @@
     <groupId>javaschool</groupId>
     <artifactId>jpahibernate</artifactId>
     <version>1.0</version>
-
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -34,6 +38,11 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-envers</artifactId>
+            <version>5.0.1.Final</version>
         </dependency>
 
     </dependencies>

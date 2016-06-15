@@ -1,5 +1,4 @@
-<%@ page import="javaschool.entity.Product" %>
-<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,8 +10,6 @@
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/><!-- навигация -->
 <jsp:include page="WEB-INF/cabinetbar.jsp" flush="true"/><!-- навигация -->
 <jsp:include page="WEB-INF/cabinetbaradmin.jsp" flush="true"/><!-- навигация -->
-
-
 <div class="container">
     <div class="panel panel-default" id="order">
         <div class="panel-heading">
@@ -28,31 +25,25 @@
                     <th>Цена</th>
                     <th>Дополнительно</th>
                 </tr>
-                <%
-                    for (Product product : (List<Product>) session.getAttribute("productList")) {
-                %>
-                <tr>
-                    <td><%=product.getId()%>
-                    </td>
-                    <td><%=product.getBrand()%>
-                    </td>
-                    <td><%=product.getCollection()%>
-                    </td>
-                    <td><%=product.getName()%>
-                    </td>
-                    <td><%=product.getPrice()%>
-                    </td>
-                    <td><form method="get" action="AdminProducts">
-                        <input type="submit" value="Подробнее">
-                        <input type="hidden" name="productId" value="<%=product.getId()%>"></form>
-                    </td>
+                <c:forEach items="${productList}" var="product">
+                    <tr>
+                        <td><c:out value="${product.id}"/></td>
+                        <td><c:out value="${product.brand}"/></td>
+                        <td><c:out value="${product.collection}"/></td>
+                        <td><c:out value="${product.name}"/></td>
+                        <td><c:out value="${product.price}"/></td>
+                        <td>
+                            <form method="get" action="AdminProductPage">
+                                <input type="submit" value="Подробнее">
+                                <input type="hidden" name="productId" value="<c:out value="${product.id}"/>"></form>
+                        </td>
+                    </tr>
+                </c:forEach>
 
-                </tr>
-                        <%}%>
             </table>
         </div>
     </div>
 </div>
-<script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.js"></script>
 </body>
 </html>

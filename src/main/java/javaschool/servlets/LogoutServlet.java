@@ -13,6 +13,8 @@ public class LogoutServlet extends HttpServlet {
         resp.addCookie(new Cookie("user_name",""));
         resp.addCookie(new Cookie("pass_word",""));
         session.removeAttribute("CheckCookie");
+        session.removeAttribute("User");
+        session.removeAttribute("clientAdress");
         resp.sendRedirect("index.jsp");
         //RequestDispatcher view = req.getRequestDispatcher("index.jsp");
         //view.forward(req, resp);

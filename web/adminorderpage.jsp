@@ -1,5 +1,5 @@
-<%@ page import="javaschool.entity.Orders" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="windows-1251"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="windows-1251" %>
 <html>
 <head>
     <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
@@ -15,44 +15,42 @@
     <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="panel panel-default" id="order">
             <div class="panel-heading">
-                Заказ №<%=((Orders) session.getAttribute("orderPage")).getId()%>
+                Заказ №<c:out value="${orderPage.id}"/>
             </div>
             <div class="panel-body">
                 <table class="table">
                     <tr>
                         <td>Id клиента</td>
-                        <td><%=((Orders) session.getAttribute("orderPage")).getClient().getClientId()%>
-                        </td>
+                        <td><c:out value="${orderPage.client.clientId}"/></td>
                     </tr>
                     <tr>
                         <td>Данные клиента</td>
-                        <td><%=((Orders) session.getAttribute("orderPage")).getClient().getName()%>
-                            <%=((Orders) session.getAttribute("orderPage")).getClient().getSurname()%>
+                        <td>
+                            <c:out value="${orderPage.client.name}"/>
+                            <c:out value="${orderPage.client.surname}"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Оплата</td>
-                        <td><%=((Orders) session.getAttribute("orderPage")).getPayment()%>
-                        </td>
+                        <td><c:out value="${orderPage.payment}"/></td>
                     </tr>
                     <tr>
                         <td>Доставка</td>
-                        <td><%=((Orders) session.getAttribute("orderPage")).getDelivery()%>
-                        </td>
+                        <td><c:out value="${orderPage.delivery}"/></td>
                     </tr>
                     <tr>
                         <td>Статус оплаты</td>
-                        <td><%=((Orders) session.getAttribute("orderPage")).getPaymentStatus()%>
+                        <td><c:out value="${orderPage.paymentStatus}"/></td>
                         </td>
                     </tr>
                     <tr>
                         <td>Статус заказа</td>
-                        <td><%=((Orders) session.getAttribute("orderPage")).getOrderStatus()%>
+                        <td><c:out value="${orderPage.orderStatus}"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Дата заказа</td>
-                        <td><%=((Orders) session.getAttribute("orderPage")).getOrderDate()%>
+                        <td><c:out value="${format.format(orderPage.orderDate)}"/>
                         </td>
                     </tr>
                 </table>
@@ -83,14 +81,44 @@
                                maxlength="25" placeholder="Статус заказа">
                     </div>
                     <input type="hidden" name="orderId"
-                           value="<%=((Orders) session.getAttribute("orderPage")).getId()%>">
+                           value="<c:out value="${orderPage.id}"/>">
                     <input type="submit" value="Сохранить" class="btn btn-info btn-block">
                 </form>
             </div>
         </div>
     </div>
 </div>
-
+<div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Подробности заказа №<c:out value="${orderPage.id}"/>
+            </div>
+            <div class="panel-body"></div>
+            <table class="table">
+                <tr>
+                    <th>Наименование</th>
+                    <th>Цена, руб.</th>
+                    <th>Колличество, шт</th>
+                </tr>
+                <c:set var="sum" value="0"/>
+                <c:forEach items="${orderPage.bucket}" var="orderProduct">
+                    <tr>
+                        <td><c:out value="${orderProduct.productId.name}"/></td>
+                        <td><c:out value="${orderProduct.productId.price}"/></td>
+                        <td><c:out value="${orderProduct.quantity}"/></td>
+                        <c:set var="sum" value="${sum + orderProduct.productId.price * orderProduct.quantity}"/>
+                    </tr>
+                </c:forEach>
+                <tr>
+                    <td></td>
+                    <td>Общая стоимость, руб</td>
+                    <td><c:out value="${sum}"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 <script src="js/bootstrap.js"></script>
 </body>
 </html>

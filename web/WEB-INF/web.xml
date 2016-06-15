@@ -7,7 +7,23 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    AdminOrderPageServlet
+
+    <servlet>
+        <servlet-name>FilterServlet</servlet-name>
+        <servlet-class>javaschool.servlets.FilterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FilterServlet</servlet-name>
+        <url-pattern>/Filter</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminProductPageServlet</servlet-name>
+        <servlet-class>javaschool.servlets.AdminProductPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminProductPageServlet</servlet-name>
+        <url-pattern>/AdminProductPage</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>AdminOrderPageServlet</servlet-name>
         <servlet-class>javaschool.servlets.AdminOrderPageServlet</servlet-class>
@@ -136,9 +152,7 @@
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
-    <listener>
-        <listener-class>javaschool.servlets.listeners.ClientSessionCountListener</listener-class>
-    </listener>
+
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>

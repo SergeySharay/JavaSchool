@@ -19,7 +19,6 @@ public class Client {
     private String password;
     private Integer permission;
     private Date birthday;
-    //@ElementCollection(targetClass=Orders.class)
     private Set<Orders> orders;
     private Set<ClientAdress> clientAdressSet;
 

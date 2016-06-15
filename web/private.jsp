@@ -1,4 +1,4 @@
-<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="windows-1251" %>
 <html>
 <head>
@@ -17,35 +17,35 @@
                 <p>Личные данные</p>
             </div>
             <table class="table">
-                <%List<String> clientAtributes = (List<String>) session.getAttribute("clienAtributes");%>
                 <tr>
                     <td>Имя</td>
-                    <td><%=clientAtributes.get(0)%>
+                    <td><c:out value="${User.name}"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Фамиилия</td>
-                    <td><%=clientAtributes.get(1)%>
+                    <td><c:out value="${User.surname}"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Почта</td>
-                    <td><%=clientAtributes.get(2)%>
+                    <td><c:out value="${User.email}"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Пароль</td>
-                    <td><%=clientAtributes.get(3)%>
+                    <td><c:out value="${User.password}"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Дата рождения</td>
-                    <td><%=clientAtributes.get(4)%>
+                    <td>
+                        ${User.birthday == null ? "Отсутсвует" : format.format(User.birthday)}
                     </td>
                 </tr>
                 <tr>
                     <td>Статус</td>
-                    <td><%=clientAtributes.get(5)%>
+                    <td>${User.permission == 1 ? "Сотрудник" : "Покупатель"}
                     </td>
                 </tr>
             </table>

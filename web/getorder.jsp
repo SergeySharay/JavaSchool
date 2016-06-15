@@ -1,5 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="javaschool.dao.ProductDaoImpl" %>
-<%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="windows-1251"%>
 <html>
@@ -21,8 +21,9 @@
                         Map<Long, Integer> products = (Map<Long, Integer>) session.getAttribute("Order");
                         ProductDaoImpl productDao = new ProductDaoImpl();
                         for (Map.Entry entry : products.entrySet())
-                            sum += (productDao.get((Long) entry.getKey()).getPrice() * (Integer) entry.getValue());
+                        sum += (productDao.get((Long) entry.getKey()).getPrice() * (Integer) entry.getValue());
                     %>
+
                     <p>Ваш заказ на сумму, рублей: <%=sum%>
                     </p>
 
@@ -96,39 +97,37 @@
                 <div class="panel-heading"><p>Адрес доставки</p></div>
                 <div class="panel-body privatetable">
                     <table class="table">
-                        <%List<String> adressAtributes = (List<String>) session.getAttribute("clienAdressAtributes");%>
                         <tr>
                             <td>Страна</td>
-                            <td><%=adressAtributes.get(0)%>
+                            <td>
+                                <c:out value="${clientAdress.country}"/>
                             </td>
                         </tr>
                         <tr>
                             <td>Город</td>
-                            <td><%=adressAtributes.get(1)%>
+                            <td><c:out value="${clientAdress.city}"/>
                             </td>
                         </tr>
                         <tr>
                             <td>Улица</td>
-                            <td><%=adressAtributes.get(2)%>
+                            <td><c:out value="${clientAdress.street}"/>
                             </td>
                         </tr>
                         <tr>
                             <td>Дом</td>
-                            <td><%=adressAtributes.get(3)%>
+                            <td><c:out value="${clientAdress.house}"/>
                             </td>
                         </tr>
                         <tr>
                             <td>Квартира</td>
-                            <td><%=adressAtributes.get(4)%>
+                            <td><c:out value="${clientAdress.flat}"/>
                             </td>
                         </tr>
                         <tr>
                             <td>Почтовый индекс</td>
-                            <td><%=adressAtributes.get(5)%>
-                            </td>
+                            <td><c:out value="${clientAdress.zipcode}"/></td>
                         </tr>
-                    </table>
-                    <form action="adress.jsp">
+                    </table><form action="adress.jsp">
                         <button type="submit" value="" class="btn btn-primary">Изменить адрес</button>
                     </form>
                 </div>

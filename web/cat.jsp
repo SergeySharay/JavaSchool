@@ -1,5 +1,4 @@
-<%@ page import="javaschool.dao.CollectionDaoImpl" %>
-<%@ page import="java.util.Set" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
@@ -9,116 +8,61 @@
 <body>
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/> <!-- навигация -->
 
-  <div class="container"><!-- хлебные крошки-->
+  <div class="container">
+
     <div class="row">
       <div class="container">
-      <ol class="breadcrumb">
-        <li><a href="index.jsp">
-          <i class="fa fa-home"></i>
-        </a></li>
-        <li><a href="Catalog">Каталог товаров</a></li>
-        <li class="active"><a href="Catalog">Бренды</a></li>
-      </ol>
+        <ol class="breadcrumb">
+          <li><a href="index.jsp">
+            <i class="fa fa-home"></i>
+          </a></li>
+          <li><a href="Catalog">Каталог товаров</a></li>
+          <li class="active"><a href="Catalog">Бренды</a></li>
+        </ol>
+      </div><!-- хлебные крошки-->
     </div><!-- хлебные крошки-->
-    </div>
+
+    <div class="container">
+      <div class="row">
+        <form role="form" method="get" action="Filter" class="btn">
+          <input type="submit" value="Подобрать товар" class="btn btn-info">
+        </form>
+        <c:forEach items="${catalogMenuBrandList}" var="brand">
+          <form role="form" method="get" action="Catalog" class="btn">
+            <input type="submit" value="<c:out value="${brand}"/>" class="btn btn-primary">
+            <input type="hidden" name="Brands" value="<c:out value="${brand}"/>">
+          </form>
+        </c:forEach>
+      </div>
+    </div><!-- Бренды-->
+    <br>
+
   </div>
-  <div class="container"> <!-- вкладки брендов -->
-    <ul class="nav nav-tabs">
-        <%
-          CollectionDaoImpl collectionDao = new CollectionDaoImpl();
-          boolean flag = true;
-          Set<String> brands = (Set<String>) request.getAttribute("brands");
-          int i=1;
-          for (String brand : brands) {
-            Set<String> collections = (Set<String>) request.getAttribute(brand);
-              if (flag){
-              out.print("<li class=\"active\">");
-              flag=false;
-            }else
-              out.print("<li>");
-        %>
-          <a href="#tab-<%out.print(i++);%>" data-toggle="tab">
-          <% out.print(brand); %>
-          <span class="badge">
-          <% out.print(collections.size()); %>
-          </span></a></li>
-        <% } %>
-       <!-- <li><a href="#">Бренд 2 <span class="badge">5</span></a></li>
-        <li><a href="#">Бренд 3 <span class="badge">6</span></a></li> -->
-        </ul>
-    <div class="tab-content">
-      <%
-        boolean flag2 = true;
-        int i2=1;
-        for (String brand : brands) {
-          Set<String> collections = (Set<String>) request.getAttribute(brand);
-          if (flag2){
-      %>
-        <div class="tab-pane fade in active" id="tab-<%
-        flag2=false;
-        }else {%>
-        <div class="tab-pane fade" id="tab-<%}
-              out.print(i2++ +"\">");%>
-       <div class="row masonry" data-columns>
-      <%for(String collection: collections){%>
+
+<div class="container">
+  <div class="row masonry" data-columns>
+    <c:forEach items="${catalogCollectionList}" var="collection">
       <div class="item">
         <div class="thumbnail">
-          <img src="../img/col/<%out.print(collectionDao.getCollectionImage(brand,collection));%>" alt="">
+          <img src="../img/col/<c:out value="${collection}.jpg"/> " alt="">
           <div class="caption">
-            <form role="form" method="POST" action="Collection">
-            <p align="center">
-              <input type="submit" value="<%out.print(collection);%>" class="btn btn-primary">
-              <input type="hidden" name="Brand" value="<%out.print(brand);%>">
-              <input type="hidden" name="Collection" value="<%out.print(collection);%>">
-            </p></form>
+            <form role="form" method="post" action="Collection">
+              <p align="center">
+                ${collection}
+              </p>
+              <p align="right">
+                <input type="submit" value="Подробнее" class="btn btn-primary buyitem">
+                <input type="hidden" name="Brand" value="${catalogBrand}">
+                <input type="hidden" name="Collection" value="${collection}">
+              </p></form>
           </div>
         </div>
       </div>
-      <%}%>
-        </div>
-        </div>
-      <%}%>
+    </c:forEach>
     </div>
-  <hr>
+  </div>
 
 
-  <nav class="text-center">
-    <ul class="pagination pagination-lg">
-      <li class="disabled">
-        <a href="#">
-          <i class="fa fa-chevron-left"></i>
-          <i class="fa fa-chevron-left"></i>
-        </a>
-      </li>
-      <li class="disabled">
-        <a href="#">
-          <i class="fa fa-chevron-left"></i>
-        </a>
-      </li>
-      <li class="active"><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li>
-        <a href="#">
-          <i class="fa fa-chevron-right"></i>
-
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-chevron-right"></i>
-          <i class="fa fa-chevron-right"></i>
-        </a>
-      </li>
-    </ul>
-  </nav><!-- вперёд\назад-->
-  <nav> <!-- вперёд\назад-->
-    <ul class="pager">
-      <li class="previous"><a href="#">&larr; Назад</a></li>
-      <li class="next disabled"><a href="#">Вперёд &rarr;</a></li>
-    </ul>
-  </nav><!-- вперёд\назад-->
 
 <div id="bucket"><a href="bucket.jsp"><img src="../img/bucket.png"></a></div>
 

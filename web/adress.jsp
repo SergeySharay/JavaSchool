@@ -1,4 +1,4 @@
-<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="windows-1251" %>
 <html>
 <head>
@@ -55,36 +55,35 @@
                 <p>Адрес доставки</p>
             </div>
             <table class="table">
-                <%List<String> adressAtributes = (List<String>) session.getAttribute("clienAdressAtributes");%>
                 <tr>
                     <td>Страна</td>
-                    <td><%=adressAtributes.get(0)%>
+                    <td>
+                        <c:out value="${clientAdress.country}"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Город</td>
-                    <td><%=adressAtributes.get(1)%>
+                    <td><c:out value="${clientAdress.city}"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Улица</td>
-                    <td><%=adressAtributes.get(2)%>
+                    <td><c:out value="${clientAdress.street}"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Дом</td>
-                    <td><%=adressAtributes.get(3)%>
+                    <td><c:out value="${clientAdress.house}"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Квартира</td>
-                    <td><%=adressAtributes.get(4)%>
+                    <td><c:out value="${clientAdress.flat}"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Почтовый индекс</td>
-                    <td><%=adressAtributes.get(5)%>
-                    </td>
+                    <td><c:out value="${clientAdress.zipcode}"/></td>
                 </tr>
             </table>
         </div>

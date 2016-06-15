@@ -1,100 +1,82 @@
-<%@ page import="javaschool.entity.OrderProduct" %>
-<%@ page import="javaschool.entity.Orders" %>
-<%@ page import="java.text.DateFormat" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Set" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
 
-    <title>Личные данные</title>
+    <title>Информация о заказах</title>
 </head>
 <body>
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/><!-- навигация -->
 <jsp:include page="WEB-INF/cabinetbar.jsp" flush="true"/><!-- навигация -->
 
 <div class="container">
-
-
-        <%
-            int i = 1;
-            for (Orders orders : (Set<Orders>) session.getAttribute("OrdersSet")) {
-        %>
-    <div class="col-xs-12 col-sm-8 col-md-4" id="<%=i%>">
-
+    <c:forEach items="${OrdersSet}" var="orders">
+        <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-4">
     <div class="panel panel-default" id="order">
-            <div class="panel-heading">Заказ №<%=orders.getId()%>
+            <div class="panel-heading">
+                Заказ №<c:out value="${orders.id}"/>
             </div>
             <div class="panel-body">
                 <table class="table">
                     <tr>
                         <td>Оплата</td>
-                        <td><%=orders.getPayment()%>
+                        <td><c:out value="${orders.payment}"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Доставка</td>
-                        <td><%=orders.getDelivery()%>
+                        <td><c:out value="${orders.delivery}"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Статус оплаты</td>
-                        <td><%=orders.getPaymentStatus()%>
+                        <td><c:out value="${orders.paymentStatus}"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Статус заказа</td>
-                        <td><%=orders.getOrderStatus()%>
+                        <td><c:out value="${orders.orderStatus}"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Дата заказа</td>
-                        <td><%
-                            DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-                            out.print(format.format(orders.getOrderDate()));%></td>
+                        <td><c:out value="${format.format(orders.orderDate)}"/></td>
                     </tr>
                 </table>
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-8 col-md-8">
-        <div class="panel panel-default">
-            <div class="panel-heading">Подробности заказа №<%=orders.getId()%></div>
-            <div class="panel-body"></div>
-            <table class="table">
-                <tr>
-                    <th>Наименование</th>
-                    <th>Цена, руб.</th>
-                    <th>Колличество, шт</th>
-                </tr>
-                <%float sum=0;
-                    for (OrderProduct orderProduct: orders.getBucket()){
-                    %>
-
-                <tr>
-                    <td><%=orderProduct.getProductId().getName()%></td>
-                    <td><%=orderProduct.getQuantity()%></td>
-                    <td><%=orderProduct.getProductId().getPrice()%></td=
-                    <%sum+=(orderProduct.getProductId().getPrice())*(orderProduct.getQuantity());%>
-                </tr>
-
-                <%}%>
-                <tr>
-                    <td></td>
-                    <td>Общая стоимость, руб</td>
-                    <td><%=sum%></td>
-                </tr>
-            </table>
+        <div class="col-xs-12 col-sm-8 col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Подробности заказа №<c:out value="${orders.id}"/></div>
+                <div class="panel-body"></div>
+                <table class="table">
+                    <tr>
+                        <th>Наименование</th>
+                        <th>Цена, руб.</th>
+                        <th>Колличество, шт</th>
+                    </tr>
+                    <c:set var="sum" value="0"/>
+                    <c:forEach items="${orders.getBucket()}" var="orderProduct">
+                        <tr>
+                            <td><c:out value="${orderProduct.productId.name}"/> </td>
+                            <td><c:out value="${orderProduct.quantity}"/></td>
+                            <td><c:out value="${orderProduct.productId.price}"/> </td>
+                            <c:set var="sum" value="${sum + orderProduct.productId.price * orderProduct.quantity}"/>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                        <td></td>
+                        <td>Общая стоимость, руб</td>
+                        <td><c:out value="${sum}"/></td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
-        <%
-            }
-        %>
-
-
-
-
+        </div>
+    </c:forEach>
 </div>
 <script src="js/bootstrap.js"></script>
 </body>

@@ -18,21 +18,20 @@ public class Bucket {
         }
 
         if (order.containsKey(product)) {
-            order.put((product),order.get(product) + 1);
+            order.put((product), order.get(product) + 1);
         } else {
             order.put(product, 1);
         }
         httpSession.setAttribute("Order", order);
     }
 
-    public void remove(HttpServletRequest req,Long product){
+    public void remove(HttpServletRequest req, Long product) {
         HttpSession httpSession = req.getSession();
 
         if (httpSession.getAttribute("Order") != null) {
             order = (Map<Long, Integer>) httpSession.getAttribute("Order");
-            if (order.containsKey(product) && order.get(product)>1)
-            {
-                order.put((product),order.get(product) - 1);
+            if (order.containsKey(product) && order.get(product) > 1) {
+                order.put((product), order.get(product) - 1);
             } else {
                 order.remove(product);
             }

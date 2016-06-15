@@ -1,5 +1,6 @@
 package javaschool.crud;
 
+import javaschool.dao.ClientAdressDaoImpl;
 import javaschool.dao.ClientDaoImpl;
 
 import javax.servlet.http.Cookie;
@@ -19,6 +20,7 @@ public class CheckCookie {
     public static void check(HttpServletRequest request) throws UnsupportedEncodingException {
         HttpSession session = request.getSession();
         ClientDaoImpl clientDao = new ClientDaoImpl();
+        ClientAdressDaoImpl clientAdressDao = new ClientAdressDaoImpl();
         Map<String, String> userpass = clientDao.getClientEmailPassword();
         for (int i = 0; i < request.getCookies().length; i++) {
             Cookie cookie = request.getCookies()[i];
@@ -34,10 +36,11 @@ public class CheckCookie {
             if (userpass.get(user_name).equals(pass_word)) {
                 session.setAttribute("CheckCookie", "true");
                 session.setAttribute("User", clientDao.getClient(user_name));
-
+                session.setAttribute("clientAdress",clientAdressDao.getAdress(clientDao.getClient(user_name)));
             }
         DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         session.setAttribute("format",format);
+
        // if (session.getAttribute("Order") == null) {
         //    session.setAttribute("Order", new HashMap<Long, Integer>());
         //}

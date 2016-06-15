@@ -10,7 +10,8 @@ import java.util.Set;
         @NamedQuery(name = "Product.getProducts", query = "SELECT P from Product P"),
         @NamedQuery(name = "Product.getProductsInCollection", query = "SELECT P from Product P where P.brand=:brand and P.collection= :collection"),
         @NamedQuery(name = "Product.getBrands", query = "SELECT P.brand from Product P"),
-        @NamedQuery(name = "Product.getCollections", query = "SELECT P.collection from Product P where P.brand = :brand")
+        @NamedQuery(name = "Product.getCollections", query = "SELECT P.collection from Product P where P.brand = :brand"),
+        @NamedQuery(name = "Product.getAllCollections", query = "SELECT P.collection from Product P")
 
 })
 

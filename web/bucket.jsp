@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="javaschool.dao.ProductDaoImpl" %>
 <%@ page import="java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -9,7 +10,6 @@
 <body>
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/>
 <!-- навигация -->
-
 <% Map<Long, Integer> products = (Map<Long, Integer>) session.getAttribute("Order");
     ProductDaoImpl productDao = new ProductDaoImpl();
 %>
@@ -50,7 +50,6 @@
                     <td><%=(productDao.get((Long) entry.getKey()).getPrice() * (Integer) entry.getValue())%>
                     </td>
                 </tr>
-
                 <%}%>
                 <tr>
                     <td></td>
@@ -63,18 +62,11 @@
             <p><%
                 if (session.getAttribute("CheckCookie") == "true") {
                     if (sum > 0) {
-                        if (session.getAttribute("clienAdressAtributes")==null){%>
-
-            <form method="get" action="Cabinet" id="getcab"></form>
-            <button type="submit" form="getcab" class="btn btn-primary">Проверить данные</button>
-
-            <%
-            } else {
-            %>
-            <form method="get" action="../getorder.jsp" id="getorder"></form>
-            <button type="submit" form="getorder" class="btn btn-primary">Оформить заказ</button>
+                    %>
+                    <form method="get" action="../getorder.jsp" id="getorder"></form>
+                    <button type="submit" form="getorder" class="btn btn-primary">Оформить заказ</button>
                 <%
-                        }} else {
+                        } else {
                             out.print("Для того что бы оформить заказ, необходимо добавить товары в корзину");
                         }
                     } else {out.print("Для того что бы оформить заказ, необходимо зарегистрироваться или войти в аккаунт");}
@@ -82,8 +74,6 @@
         </div>
     </div>
 </div>
-
-
 <script src="js/bootstrap.js"></script>
 </body>
 </html>

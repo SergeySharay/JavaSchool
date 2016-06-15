@@ -9,11 +9,9 @@ public class ClientSessionCountListener implements HttpSessionListener {
     public static int getActiveSessions(){
         return activeSessions;
     }
-
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
     activeSessions++;
     }
-
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
     activeSessions--;
     }
