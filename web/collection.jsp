@@ -1,33 +1,33 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html;charset=UTF-8" language="java" pageEncoding="windows-1251" %>
 <html lang="ru">
 <head>
     <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
-    <title>РљР°С‚Р°Р»РѕРі</title>
+    <title>Каталог</title>
 </head>
 <body>
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/>
-<!-- РЅР°РІРёРіР°С†РёСЏ -->
+<!-- навигация -->
 <div class="container">
-    <div class="row"><!-- С…Р»РµР±РЅС‹Рµ РєСЂРѕС€РєРё-->
+    <div class="row"><!-- хлебные крошки-->
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="index.jsp">
                     <i class="fa fa-home"></i>
                 </a></li>
-                <li><a href="Catalog">РљР°С‚Р°Р»РѕРі С‚РѕРІР°СЂРѕРІ</a></li>
+                <li><a href="Catalog">Каталог товаров</a></li>
                 <li><a href="Catalog?Brands=<c:out value="${Brand}"/>"><c:out value="${Brand}"/></a></li>
                 <li class="active"><a href="#"><c:out value="${Collection}"/></a></li>
             </ol>
         </div>
-        <!-- С…Р»РµР±РЅС‹Рµ РєСЂРѕС€РєРё-->
+        <!-- хлебные крошки-->
     </div>
-    <!-- С…Р»РµР±РЅС‹Рµ РєСЂРѕС€РєРё-->
+    <!-- хлебные крошки-->
     <div class="row">
         <div class="container">
             <div class="row">
                 <c:forEach items="${Collections}" var="collection">
-                    <form role="form" method="POST" action="Collection" class="btn">
+                    <form role="form" method="GET" action="Collection" class="btn">
                         <input type="submit" value="<c:out value="${collection}"/>" class="btn btn-primary">
                         <input type="hidden" name="Brand" value="<c:out value="${Brand}"/>">
                         <input type="hidden" name="Collection" value="<c:out value="${collection}"/>">
@@ -46,17 +46,29 @@
                     <img src="../img/pic/<c:out value="${product.id}"/>.jpg" alt="">
 
                     <div class="caption">
-                        <form role="form" method="POST" action="Order">
-                            <p align="center">
-                                <c:out value="${product.name}"/>
-                            </p>
+                        <div id="blok4">
+                        <form role="form" method="post" action="ProductPage">
 
+                            <input type="submit" value="Инфо" class="btn btn-info">
+                            <input type="hidden" name="Product" value="<c:out value="${product.id}"/>">
+                            <input type="hidden" name="Brand" value="<c:out value="${Brand}"/>">
+                            <input type="hidden" name="Collection" value="<c:out value="${Collection}"/>">
+                        </form>
+                        </div>
+                        <form role="form" method="POST" action="Order">
+                            <div id="blok1" class="btn btn-primary">
+                                <c:out value="${product.name}"/>
+                            </div>
+                            <div id="blok2" class="btn btn-primary">
+                                <c:out value="${product.price}"/>
+                            </div>
                             <p align="right">
-                                <input type="submit" value="РљСѓРїРёС‚СЊ" class="btn btn-primary buyitem">
+                                <input type="submit" value="Купить" class="btn btn-success buyitem">
                                 <input type="hidden" name="Brand" value="<c:out value="${Brand}"/>">
                                 <input type="hidden" name="Collection" value="<c:out value="${Collection}"/>">
                                 <input type="hidden" name="Product" value="<c:out value="${product.id}"/>">
-                            </p></form>
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -60,11 +60,11 @@
                 <form role="form" method="POST" action="Private">
                     <div class="form-group">
                         <input type="text" name="firstName" id="firstName" class="form-control input-sm"
-                               maxlength="50" placeholder="Èìÿ">
+                               maxlength="50" placeholder="Èìÿ" pattern="^[A-Za-zÀ-ßà-ÿ¨¸]+$">
                     </div>
                     <div class="form-group">
                         <input type="text" name="lastName" id="lastName" class="form-control input-sm"
-                               maxlength="50" placeholder="Ôàìèëèÿ">
+                               maxlength="50" placeholder="Ôàìèëèÿ" pattern="^[A-Za-zÀ-ßà-ÿ¨¸]+$">
                     </div>
                     <div class="form-group">
                         <input type="email" name="email" id="email" class="form-control input-sm"

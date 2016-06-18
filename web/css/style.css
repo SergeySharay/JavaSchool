@@ -122,3 +122,17 @@ a.spoiler.collapsed:after{
     margin:5px;
 
 }
+#blok1{
+    float:left;
+
+}
+#blok2{
+    float:right;
+}
+#blok3{
+    float:right;
+}
+#blok4{
+    float:left;
+    height: 34px;
+}

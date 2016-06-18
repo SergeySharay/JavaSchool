@@ -13,7 +13,10 @@
 <div class="container">
     <div class="panel panel-default" id="order">
         <div class="panel-heading">
-            Список товаров
+             <div align="right">
+            <form role="form" method="get" action="adminproductadd.jsp" class="btn">
+                <input type="submit" value="Добавить товар" class="btn btn-info">
+            </form></div>
         </div>
         <div class="panel-body">
             <table class="table">

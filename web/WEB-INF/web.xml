@@ -9,6 +9,30 @@
     </welcome-file-list>
 
     <servlet>
+        <servlet-name>StatisticServlet</servlet-name>
+        <servlet-class>javaschool.servlets.StatisticServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StatisticServlet</servlet-name>
+        <url-pattern>/Statistic</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductPageServlet</servlet-name>
+        <servlet-class>javaschool.servlets.ProductPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductPageServlet</servlet-name>
+        <url-pattern>/ProductPage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminProductAddServlet</servlet-name>
+        <servlet-class>javaschool.servlets.AdminProductAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminProductAddServlet</servlet-name>
+        <url-pattern>/AdminProductAdd</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>FilterServlet</servlet-name>
         <servlet-class>javaschool.servlets.FilterServlet</servlet-class>
     </servlet>

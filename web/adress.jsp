@@ -21,7 +21,7 @@
 
                     <div class="form-group">
                         <input type="text" name="country" id="country" class="form-control input-sm"
-                               placeholder="Страна" maxlength="40">
+                               placeholder="Страна" maxlength="40" pattern="^[A-Za-zА-Яа-яЁё]+$">
                     </div>
                     <div class="form-group">
                         <input type="text" name="city" id="city" class="form-control input-sm"

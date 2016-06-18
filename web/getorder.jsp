@@ -137,7 +137,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><p>Подверждение заказа</p></div>
                 <div class="panel-body privatetable">
+                    <%if (sum>0){%>
                     <button type="submit" form="nextorder" class="btn btn-primary">Оформить заказ</button>
+                    <%}else{ out.print("Добавьте товары в корзину");}%>
                 </div>
             </div>
         </div>

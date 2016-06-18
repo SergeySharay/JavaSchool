@@ -1,5 +1,6 @@
 package javaschool.servlets;
 
+import com.google.common.base.Strings;
 import javaschool.dao.ProductDaoImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -17,14 +18,13 @@ public class CatalogServlet extends HttpServlet {
 //        List<Product> productList = productDAO.getProducts();
         req.setAttribute("catalogMenuBrandList",productDAO.getBrands());//передамем множество брендов
 
-        if (!equals(req.getParameter("Brands"),"all")){
+        req.setAttribute("catalogCollectionList",productDAO.getCollections());
+        //req.setAttribute("catalogBrand", "Venis");
+
+        if (!Strings.isNullOrEmpty(req.getParameter("Brands"))){
             req.setAttribute("catalogCollectionList",productDAO.getCollections(req.getParameter("Brands")));//передамем множество коллекций
             req.setAttribute("catalogBrand",req.getParameter("Brands"));
-            } else
-        {
-            req.setAttribute("catalogCollectionList",productDAO.getCollections("Venis"));
-            req.setAttribute("catalogBrand", "Venis");
-        }
+            }
 
 //        httpSession.setAttribute("catalogProductList",productList);
         RequestDispatcher view = req.getRequestDispatcher("cat.jsp");

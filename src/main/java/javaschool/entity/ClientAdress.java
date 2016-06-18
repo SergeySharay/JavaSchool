@@ -3,8 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="client_adress", schema="client")
-@NamedQuery(name="ClientAdress.getAdress",query = "SELECT C from ClientAdress C where client=:client")
-
+@NamedQuery(name = "ClientAdress.getAdress", query = "SELECT C from ClientAdress C where client=:client")
 
 public class ClientAdress {
     private Long clientAdressId;

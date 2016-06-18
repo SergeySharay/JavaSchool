@@ -9,7 +9,7 @@
                 <li><a href="../private.jsp">Изменить личные данные</a></li>
                 <li><a href="../adress.jsp">Изменить адрес доставки</a></li>
                 <li><a href="../bucket.jsp">Корзина</a></li>
-                <c:if test="${Order!=null}"><li><a href="../getorder.jsp">Текущий заказ</a></li></c:if>
+                <c:if test="${(Order!=null) && Order.size()>0 }"><li><a href="../getorder.jsp">Текущий заказ</a></li></c:if>
                 <c:if test="${User.permission < 2}"><li><a href="../admin.jsp">Администрирование</a></li></c:if>
             </ul>
         </div>

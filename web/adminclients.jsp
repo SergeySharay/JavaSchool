@@ -39,7 +39,7 @@
                         </td>
                         <td><c:out value="${client.permission}"/></td>
                         <td>
-                            <form method="get" action="AdminClients">
+                            <form method="post" action="AdminClients">
                                 <input type="submit" value="изменить">
                                 <input type="hidden" name="clientId" value="<c:out value="${client.clientId}"/>"></form>
                         </td>

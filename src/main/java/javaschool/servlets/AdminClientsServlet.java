@@ -24,4 +24,17 @@ public class AdminClientsServlet extends HttpServlet {
         RequestDispatcher view = req.getRequestDispatcher("adminclients.jsp");
         view.forward(req, resp);
     }
+
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        ClientDaoImpl clientDao = new ClientDaoImpl();
+        Client client = clientDao.get(Long.parseLong(req.getParameter("clientId")));
+        if (client.getPermission()==1){
+        client.setPermission(2);
+        } else{
+        client.setPermission(1);
+        }
+        clientDao.update(client);
+        resp.sendRedirect("AdminClients");
+    }
 }
