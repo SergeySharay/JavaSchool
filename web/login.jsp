@@ -18,6 +18,9 @@
         </div>
         <div class="panel-body">
           <form role="form" method="POST" action="Login">
+              <c:if test="${checkac=='false'}">
+                  <div class="privatetable"><p align="center">Неправильно введен Логин или Пароль.</p></div>
+              </c:if>
               <div class="form-group">
               <input type="email" name="user_name" id="email" class="form-control input-sm" placeholder="Email">
               </div>

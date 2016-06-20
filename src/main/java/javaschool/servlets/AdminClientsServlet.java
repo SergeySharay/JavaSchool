@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class AdminClientsServlet extends HttpServlet {
@@ -20,7 +18,6 @@ public class AdminClientsServlet extends HttpServlet {
         ClientDaoImpl clientDao = new ClientDaoImpl();
         List<Client> clientList = clientDao.getClients();
         httpSession.setAttribute("clientList", clientList);
-        DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         RequestDispatcher view = req.getRequestDispatcher("adminclients.jsp");
         view.forward(req, resp);
     }
@@ -29,10 +26,10 @@ public class AdminClientsServlet extends HttpServlet {
 
         ClientDaoImpl clientDao = new ClientDaoImpl();
         Client client = clientDao.get(Long.parseLong(req.getParameter("clientId")));
-        if (client.getPermission()==1){
-        client.setPermission(2);
-        } else{
-        client.setPermission(1);
+        if (client.getPermission() == 1) {
+            client.setPermission(2);
+        } else {
+            client.setPermission(1);
         }
         clientDao.update(client);
         resp.sendRedirect("AdminClients");

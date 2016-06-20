@@ -14,33 +14,40 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Котики Вас ждут!</h3>
+                    <c:if test="${emailerror=='true'}">
+                        <div class="privatetable"><p align="center">Пользователь уже зарегистрирован.</p></div>
+                    </c:if>
+                    <c:if test="${passerror=='true'}">
+                        <div class="privatetable"><p align="center">Неправильно подтвержден пароль.</p></div>
+                    </c:if>
+
                 </div>
                 <div class="panel-body">
                     <form role="form" method="POST" action="Registration">
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Имя">
+                                    <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Имя" required>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Фамилия">
+                                    <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Фамилия" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="user_name" id="email" class="form-control input-sm" placeholder="Email">
+                            <input type="email" name="user_name" id="email" class="form-control input-sm" placeholder="Email" required>
                         </div>
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="password" name="pass_word" id="password" class="form-control input-sm" placeholder="Пароль">
+                                    <input type="password" name="pass_word" id="password" class="form-control input-sm" placeholder="Пароль" required>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Повторите пароль">
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Повторите пароль" required>
                                 </div>
                             </div>
                         </div>

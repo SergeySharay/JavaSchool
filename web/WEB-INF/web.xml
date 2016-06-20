@@ -16,6 +16,7 @@
         <servlet-name>StatisticServlet</servlet-name>
         <url-pattern>/Statistic</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>ProductPageServlet</servlet-name>
         <servlet-class>javaschool.servlets.ProductPageServlet</servlet-class>
@@ -24,6 +25,7 @@
         <servlet-name>ProductPageServlet</servlet-name>
         <url-pattern>/ProductPage</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>AdminProductAddServlet</servlet-name>
         <servlet-class>javaschool.servlets.AdminProductAddServlet</servlet-class>
@@ -32,6 +34,7 @@
         <servlet-name>AdminProductAddServlet</servlet-name>
         <url-pattern>/AdminProductAdd</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>FilterServlet</servlet-name>
         <servlet-class>javaschool.servlets.FilterServlet</servlet-class>
@@ -40,6 +43,7 @@
         <servlet-name>FilterServlet</servlet-name>
         <url-pattern>/Filter</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>AdminProductPageServlet</servlet-name>
         <servlet-class>javaschool.servlets.AdminProductPageServlet</servlet-class>
@@ -48,6 +52,7 @@
         <servlet-name>AdminProductPageServlet</servlet-name>
         <url-pattern>/AdminProductPage</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>AdminOrderPageServlet</servlet-name>
         <servlet-class>javaschool.servlets.AdminOrderPageServlet</servlet-class>
@@ -56,6 +61,7 @@
         <servlet-name>AdminOrderPageServlet</servlet-name>
         <url-pattern>/AdminOrderPage</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>AdminProductsServlet</servlet-name>
         <servlet-class>javaschool.servlets.AdminProductsServlet</servlet-class>
@@ -64,6 +70,7 @@
         <servlet-name>AdminProductsServlet</servlet-name>
         <url-pattern>/AdminProducts</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>AdminOrdersServlet</servlet-name>
         <servlet-class>javaschool.servlets.AdminOrdersServlet</servlet-class>
@@ -72,6 +79,7 @@
         <servlet-name>AdminOrdersServlet</servlet-name>
         <url-pattern>/AdminOrders</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>AdminClientsServlet</servlet-name>
         <servlet-class>javaschool.servlets.AdminClientsServlet</servlet-class>
@@ -80,6 +88,7 @@
         <servlet-name>AdminClientsServlet</servlet-name>
         <url-pattern>/AdminClients</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>HistoryServlet</servlet-name>
         <servlet-class>javaschool.servlets.HistoryServlet</servlet-class>
@@ -88,6 +97,7 @@
         <servlet-name>HistoryServlet</servlet-name>
         <url-pattern>/History</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>GetOrderServlet</servlet-name>
         <servlet-class>javaschool.servlets.GetOrderServlet</servlet-class>
@@ -96,6 +106,7 @@
         <servlet-name>GetOrderServlet</servlet-name>
         <url-pattern>/GetOrder</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>RegistrationServlet</servlet-name>
         <servlet-class>javaschool.servlets.RegistrationServlet</servlet-class>
@@ -104,6 +115,7 @@
         <servlet-name>RegistrationServlet</servlet-name>
         <url-pattern>/Registration</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>CabinetServlet</servlet-name>
         <servlet-class>javaschool.servlets.CabinetServlet</servlet-class>
@@ -112,6 +124,7 @@
         <servlet-name>CabinetServlet</servlet-name>
         <url-pattern>/Cabinet</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>javaschool.servlets.LoginServlet</servlet-class>
@@ -120,6 +133,7 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>CollectionServlet</servlet-name>
         <servlet-class>javaschool.servlets.CollectionServlet</servlet-class>
@@ -128,6 +142,7 @@
         <servlet-name>CollectionServlet</servlet-name>
         <url-pattern>/Collection</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>CatalogServlet</servlet-name>
         <servlet-class>javaschool.servlets.CatalogServlet</servlet-class>
@@ -136,6 +151,7 @@
         <servlet-name>CatalogServlet</servlet-name>
         <url-pattern>/Catalog</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>AdressServlet</servlet-name>
         <servlet-class>javaschool.servlets.AdressServlet</servlet-class>
@@ -144,6 +160,7 @@
         <servlet-name>AdressServlet</servlet-name>
         <url-pattern>/Adress</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>PrivateServlet</servlet-name>
         <servlet-class>javaschool.servlets.PrivateServlet</servlet-class>
@@ -152,6 +169,7 @@
         <servlet-name>PrivateServlet</servlet-name>
         <url-pattern>/Private</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>OrderServlet</servlet-name>
         <servlet-class>javaschool.servlets.OrderServlet</servlet-class>
@@ -160,6 +178,7 @@
         <servlet-name>OrderServlet</servlet-name>
         <url-pattern>/Order</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>BucketServlet</servlet-name>
         <servlet-class>javaschool.servlets.BucketServlet</servlet-class>
@@ -168,6 +187,7 @@
         <servlet-name>BucketServlet</servlet-name>
         <url-pattern>/Bucket</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>javaschool.servlets.LogoutServlet</servlet-class>

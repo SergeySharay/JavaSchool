@@ -84,7 +84,8 @@
     <div class="panel panel-default">
       <div class="panel-heading"><p>Картинка</p></div>
       <div class="panel-body privatetable">
-      <p align="center"><img src="../img/pic/<c:out value="${Product.id}"/>.jpg" alt=""></p>
+      <p align="center"><img src="../img/pic/<c:if test="${Product.picture==null}"><c:out value="${Product.id}"/></c:if><c:if test="${Product.picture!=null}"><c:out value="${Product.picture}"/></c:if>.jpg" alt="">
+      </p>
         <form role="form" method="POST" action="Order">
           <p align="center">
             <input type="submit" value="Купить" class="btn btn-primary">

@@ -10,15 +10,17 @@
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/><!-- навигация -->
 <jsp:include page="WEB-INF/cabinetbar.jsp" flush="true"/><!-- навигация -->
 
-<div class="container">
+<div class="container orders-all">
+    <c:set var="c" value="1"/>
     <c:forEach items="${OrdersSet}" var="orders">
         <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-4">
-    <div class="panel panel-default" id="order">
-            <div class="panel-heading">
+    <div class="panel panel-default marg" id="order">
+
+            <div class="panel-heading order-hidding" data-id="<c:out value="${c}"/>">
                 Заказ №<c:out value="${orders.id}"/>
             </div>
-            <div class="panel-body">
+            <div class="panel-body order-class" data-id="<c:out value="${c}"/>">
                 <table class="table">
                     <tr>
                         <td>Оплата</td>
@@ -49,14 +51,15 @@
         </div>
     </div>
         <div class="col-xs-12 col-sm-8 col-md-8">
-            <div class="panel panel-default">
+            <div class="panel panel-default order-class" data-id="<c:out value="${c}"/>">
                 <div class="panel-heading">Подробности заказа №<c:out value="${orders.id}"/></div>
                 <div class="panel-body"></div>
                 <table class="table">
                     <tr>
                         <th>Наименование</th>
-                        <th>Цена, руб.</th>
                         <th>Колличество, шт</th>
+                        <th>Цена, руб.</th>
+
                     </tr>
                     <c:set var="sum" value="0"/>
                     <c:forEach items="${orders.getBucket()}" var="orderProduct">
@@ -76,8 +79,20 @@
             </div>
         </div>
         </div>
+        <c:set var="c" value="${c+1}"/>
     </c:forEach>
 </div>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('.orders-all .order-hidding').click(function(){
+            var this_id = jQuery(this).attr("data-id");
+            jQuery('.order-hidding').removeClass('active');
+            jQuery(this).toggleClass('active');
+            jQuery('.order-class').removeClass('active');
+            jQuery('[data-id = '+this_id+']').addClass('active');
+        });
+    });
+</script>
 <script src="js/bootstrap.js"></script>
 </body>
 </html>

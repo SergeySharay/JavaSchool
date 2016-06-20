@@ -16,7 +16,8 @@ import java.io.IOException;
 import java.util.*;
 
 public class StatisticServlet extends HttpServlet {
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         OrderProductDaoImpl orderProductDao = new OrderProductDaoImpl();
         List<OrderProduct> orderProductList = orderProductDao.getOrderProducts();
         Map<Product, Long> productLongMap = new LinkedHashMap<Product, Long>();
@@ -37,53 +38,52 @@ public class StatisticServlet extends HttpServlet {
         List<Orders> ordersList = ordersDao.getOrders();
         Map<Client, Long> ordersLongMap = new LinkedHashMap<Client, Long>();
 
-        for (Orders orders: ordersList){
-            if (ordersLongMap.containsKey(orders.getClient())){
+        for (Orders orders : ordersList) {
+            if (ordersLongMap.containsKey(orders.getClient())) {
                 ordersLongMap.put(orders.getClient(), (ordersLongMap.get(orders.getClient()) + 1L));
-            }else
-            {
+            } else {
                 ordersLongMap.put(orders.getClient(), 1L);
             }
         }
-        Map<Client,Long> sortedClientMap = sortClientMap(ordersLongMap);
-        Map<Client,Long> trimedClientMap = trimClientMap(sortedClientMap);
-        req.setAttribute("ordersLongMap",trimedClientMap);
+        Map<Client, Long> sortedClientMap = sortClientMap(ordersLongMap);
+        Map<Client, Long> trimedClientMap = trimClientMap(sortedClientMap);
+        req.setAttribute("ordersLongMap", trimedClientMap);
 
         List<Orders> ordersListDate = new LinkedList<Orders>();
         List<Orders> ordersListDateMonth = new LinkedList<Orders>();
-        for(Orders orders: ordersList){
-            if (orders.getOrderDate().getTime() > (new Date().getTime())-24*60*60*1000*7){
+        for (Orders orders : ordersList) {
+            if (orders.getOrderDate().getTime() > (new Date().getTime()) - 24 * 60 * 60 * 1000 * 7) {
                 ordersListDate.add(orders);
             }
         }
-        for(Orders orders: ordersList){
-            if (orders.getOrderDate().getTime() > (new Date().getTime())-24*60*60*1000*21){
+        for (Orders orders : ordersList) {
+            if (orders.getOrderDate().getTime() > (new Date().getTime()) - 24 * 60 * 60 * 1000 * 21) {
                 ordersListDateMonth.add(orders);
             }
         }
-        req.setAttribute("ordersListDate",ordersListDate);
-        req.setAttribute("ordersListDateMonth",ordersListDateMonth);
+        req.setAttribute("ordersListDate", ordersListDate);
+        req.setAttribute("ordersListDateMonth", ordersListDateMonth);
         RequestDispatcher view = req.getRequestDispatcher("statistic.jsp");
         view.forward(req, resp);
     }
 
     private Map<Client, Long> trimClientMap(Map<Client, Long> sortedClientMap) {
-        Map<Client,Long> trimedMap = new LinkedHashMap<Client,Long>();
+        Map<Client, Long> trimedMap = new LinkedHashMap<Client, Long>();
         int i = 0;
-        for (Iterator<Map.Entry<Client,Long>> it = sortedClientMap.entrySet().iterator(); it.hasNext() && i<10;i++){
-            Map.Entry<Client,Long> entry = it.next();
-            trimedMap.put(entry.getKey(),entry.getValue());
+        for (Iterator<Map.Entry<Client, Long>> it = sortedClientMap.entrySet().iterator(); it.hasNext() && i < 10; i++) {
+            Map.Entry<Client, Long> entry = it.next();
+            trimedMap.put(entry.getKey(), entry.getValue());
         }
         return trimedMap;
 
     }
 
-    private Map<Product,Long> trimMap(Map<Product,Long> sortedMap) {
-        Map<Product,Long> trimedMap = new LinkedHashMap<Product,Long>();
+    private Map<Product, Long> trimMap(Map<Product, Long> sortedMap) {
+        Map<Product, Long> trimedMap = new LinkedHashMap<Product, Long>();
         int i = 0;
-        for (Iterator<Map.Entry<Product,Long>> it = sortedMap.entrySet().iterator(); it.hasNext() && i<10;i++){
-            Map.Entry<Product,Long> entry = it.next();
-            trimedMap.put(entry.getKey(),entry.getValue());
+        for (Iterator<Map.Entry<Product, Long>> it = sortedMap.entrySet().iterator(); it.hasNext() && i < 10; i++) {
+            Map.Entry<Product, Long> entry = it.next();
+            trimedMap.put(entry.getKey(), entry.getValue());
         }
         return trimedMap;
     }

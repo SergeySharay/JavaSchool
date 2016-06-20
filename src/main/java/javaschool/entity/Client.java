@@ -5,10 +5,11 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name="clients", schema="client")
+@Table(name = "clients", schema = "client")
 @NamedQueries({
         @NamedQuery(name = "Client.getClients", query = "SELECT C from Client C"),
-        @NamedQuery(name = "Client.getClient", query = "SELECT C from Client C where C.email =:email")
+        @NamedQuery(name = "Client.getClient", query = "SELECT C from Client C where C.email =:email"),
+        @NamedQuery(name = "Client.getOrders", query = "SELECT O from Orders O where client=:client")
 })
 public class Client {
 
@@ -22,7 +23,7 @@ public class Client {
     private Set<Orders> orders;
     private Set<ClientAdress> clientAdressSet;
 
-    public Client(){
+    public Client() {
     }
 
     public Client(String email, String name, String surname, String password) {
@@ -35,74 +36,83 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", length = 10, unique = true, nullable = false)
+    @Column(name = "id", length = 10, unique = true, nullable = false)
     public Long getClientId() {
         return clientId;
     }
+
     public void setClientId(Long clientId) {
         this.clientId = clientId;
     }
 
-    @OneToMany(targetEntity=ClientAdress.class, mappedBy="client", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = ClientAdress.class, mappedBy = "client", fetch = FetchType.LAZY)
     public Set<ClientAdress> getClientAdressSet() {
         return clientAdressSet;
     }
+
     public void setClientAdressSet(Set<ClientAdress> clientAdressSet) {
         this.clientAdressSet = clientAdressSet;
     }
 
-    @OneToMany(targetEntity=Orders.class,mappedBy="client",cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Orders.class, mappedBy = "client", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     public Set<Orders> getOrders() {
         return orders;
     }
+
     public void setOrders(Set<Orders> orders) {
         this.orders = orders;
     }
 
-    @Column(name="client_email", length = 100)
+    @Column(name = "client_email", length = 100)
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    @Column(name="client_name", length = 50)
+    @Column(name = "client_name", length = 50)
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    @Column(name="client_surname", length = 50)
+    @Column(name = "client_surname", length = 50)
     public String getSurname() {
         return surname;
     }
+
     public void setSurname(String surname) {
         this.surname = surname;
     }
 
-    @Column(name="client_password", length = 50)
+    @Column(name = "client_password", length = 50)
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    @Column(name="client_permission", length = 50)
+    @Column(name = "client_permission", length = 50)
     public Integer getPermission() {
         return permission;
     }
+
     public void setPermission(Integer permission) {
         this.permission = permission;
     }
 
-    @Column(name="client_birhtday")
+    @Column(name = "client_birhtday")
     public Date getBirthday() {
         return birthday;
     }
+
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }

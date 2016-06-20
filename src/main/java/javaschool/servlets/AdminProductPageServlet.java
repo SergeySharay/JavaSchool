@@ -57,8 +57,6 @@ public class AdminProductPageServlet extends HttpServlet {
             product.setPicture(req.getParameter("picture"));
         }
         productDao.update(product);
-
-
         httpSession.setAttribute("productPage",product);
         RequestDispatcher view = req.getRequestDispatcher("adminproductpage.jsp");
         view.forward(req, resp);

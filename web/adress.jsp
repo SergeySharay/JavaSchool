@@ -21,15 +21,15 @@
 
                     <div class="form-group">
                         <input type="text" name="country" id="country" class="form-control input-sm"
-                               placeholder="Ñòðàíà" maxlength="40" pattern="^[A-Za-zÀ-ßà-ÿ¨¸]+$">
+                               placeholder="Ñòðàíà" maxlength="40" pattern="^[A-Za-zÀ-ßà-ÿ¨¸\s\-]+$">
                     </div>
                     <div class="form-group">
                         <input type="text" name="city" id="city" class="form-control input-sm"
-                               maxlength="40" placeholder="Ãîðîä">
+                               maxlength="40" placeholder="Ãîðîä" pattern="^[A-Za-zÀ-ßà-ÿ¨¸\s\-]+$">
                     </div>
                     <div class="form-group">
                         <input type="text" name="street" id="street" class="form-control input-sm"
-                               maxlength="40" placeholder="Óëèöà">
+                               maxlength="40" placeholder="Óëèöà" pattern="^[A-Za-zÀ-ßà-ÿ¨¸\s\-\0-9]+$">
                     </div>
                     <div class="form-group">
                         <input type="text" name="house" id="house" class="form-control input-sm"

@@ -136,3 +136,19 @@ a.spoiler.collapsed:after{
     float:left;
     height: 34px;
 }
+.order-class{
+    display: none;
+}
+.order-hidding{
+    cursor: pointer;
+    padding: 2px 15px;
+}
+.order-hidding.active{
+    padding: 10px 15px;
+}
+.active{
+    display: block;
+}
+.marg{
+    margin-bottom: 6px;
+}

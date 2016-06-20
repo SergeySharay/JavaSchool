@@ -26,7 +26,6 @@ public class AdminProductAddServlet extends HttpServlet {
         product.setPicture(req.getParameter("picture"));
         productDao.add(product);
         resp.sendRedirect("AdminProducts");
-       // RequestDispatcher view = req.getRequestDispatcher("AdminProducts");
-        //view.forward(req, resp);
+
     }
 }

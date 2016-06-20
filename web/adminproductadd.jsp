@@ -57,7 +57,7 @@
           </div>
           <div class="form-group">
             <input type="text" name="picture" class="form-control input-sm"
-                   maxlength="80" placeholder="Изображение" required>
+                   maxlength="80" placeholder="Изображение">
           </div>
           <input type="submit" value="Сохранить" class="btn btn-info btn-block">
         </form>

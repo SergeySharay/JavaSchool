@@ -40,8 +40,6 @@ public class AdminOrderPageServlet extends HttpServlet {
             order.setOrderStatus(req.getParameter("orderstatus"));
         }
         ordersDao.update(order);
-
-
         httpSession.setAttribute("orderPage",order);
         RequestDispatcher view = req.getRequestDispatcher("adminorderpage.jsp");
         view.forward(req, resp);

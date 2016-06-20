@@ -1,5 +1,6 @@
 package javaschool.servlets;
 
+import javaschool.dao.ClientDaoImpl;
 import javaschool.entity.Client;
 import javaschool.entity.Orders;
 
@@ -15,10 +16,14 @@ import java.util.Set;
 public class HistoryServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
-        Client client = (Client)httpSession.getAttribute("User");
-        Set<Orders> ordersSet= client.getOrders();
-        httpSession.setAttribute("OrdersSet",ordersSet);
+        Client client = (Client) httpSession.getAttribute("User");
+        ClientDaoImpl clientDao = new ClientDaoImpl();
+        Set<Orders> ordersSet = clientDao.getOrders(client);
+
+        //Set<Orders> ordersSet = client.getOrders();
+        httpSession.setAttribute("OrdersSet", ordersSet);
+
         RequestDispatcher view = req.getRequestDispatcher("orders.jsp");
-        view.forward(req,resp);
+        view.forward(req, resp);
     }
 }

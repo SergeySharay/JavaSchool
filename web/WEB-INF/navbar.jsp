@@ -1,4 +1,4 @@
-<%@ page import="javaschool.crud.CheckCookie" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=utf-8" language="java" pageEncoding="UTF-8" %>
 <div id="navbar_menu">
     <div class="navbar navbar-inverse navbar-static-top">
@@ -22,12 +22,12 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <%
-                        CheckCookie.check(request);
-                        HttpSession httpSession = request.getSession();
-                        if (httpSession.getAttribute("CheckCookie") == "true") {
+                        //CheckCookie.check(request);
+                        if (session.getAttribute("CheckCookie") == "true") {
                     %>
                     <li><a href="Cabinet"><i class="glyphicon glyphicon-user"></i>
-                        <%out.print(CheckCookie.user_name);%></a></li>
+                    <c:out value="${User.email}"/>
+                    </a></li>
                     <li><a href="Logout"><i class="glyphicon glyphicon-off"></i> Выйти</a></li>
                     <%} else {%>
                     <li><a href="../login.jsp">Регистрация / Вход</a></li>

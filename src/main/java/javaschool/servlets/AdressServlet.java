@@ -16,9 +16,10 @@ public class AdressServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         HttpSession httpSession = req.getSession();
         Client client = ((Client) httpSession.getAttribute("User"));
-        ClientAdress clientAdress = new ClientAdressDaoImpl().getAdress(client);
-
         ClientAdressDaoImpl clientAdressDao = new ClientAdressDaoImpl();
+        ClientAdress clientAdress = clientAdressDao.getAdress(client);
+
+
 
         if (!req.getParameter("country").equals("")) {
             clientAdress.setCountry(req.getParameter("country"));
@@ -38,7 +39,7 @@ public class AdressServlet extends HttpServlet {
         if (!req.getParameter("zipcode").equals("")) {
             clientAdress.setZipcode(Long.parseLong(req.getParameter("zipcode")));
         }
-
+        httpSession.setAttribute("clientAdress",clientAdressDao.getAdress(client));
         clientAdressDao.update(clientAdress);
         resp.sendRedirect("Cabinet");
     }
