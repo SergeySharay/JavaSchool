@@ -1,82 +1,36 @@
 package javaschool.testing;
 
-import javaschool.dao.*;
-import javaschool.entity.ClientAdress;
-import javaschool.entity.Orders;
+import javaschool.crud.Bucket;
+import org.apache.log4j.Logger;
+import org.junit.Before;
 import org.junit.Test;
-
-import java.net.URLDecoder;
-import java.net.URLEncoder;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 
 public class test {
+    private static Logger logger = Logger.getLogger(test.class);
+    @Mock
+    private Bucket mockBucket;
 
-    ClientDaoImpl clientDAO = new ClientDaoImpl();
-    OrdersDaoImpl ordersDAO = new OrdersDaoImpl();
-    ProductDaoImpl productDAO = new ProductDaoImpl();
-    OrderProductDaoImpl orderProductDAO = new OrderProductDaoImpl();
+    @Spy
+    private Bucket spyBucket;
+
+    @Before
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
-    public void testSaveRecord() throws Exception {
-/*
-        //Создаем клиента для записи в БД
-        Client client1 = new Client();
-        client1.setName("audi");
-        client1.setSurname("tt");
-        client1.setEmail("audi@tt.ru");
-        client1.setBirthday(new Date());
-        //Записали в БД
-        Client client = ClientDaoImpl.add(client1);
-        //Вывели записанную в БД запись
-        System.out.println(client1.getName() + client.getId());
-        //clientDAO.get(client.getId());
-            */
-        //System.out.println(clientService.get((long) 2).getClientAdressSet());
-
-        System.out.println("--------ordersDAO----------");
-        System.out.println(ordersDAO.getOrders().size());
-
-
-        System.out.println("------------");
-        System.out.println("client 1 " + clientDAO.get((long) 1).getName());
-        System.out.println("заказы 1 клиента" + ordersDAO.getClientOrders(clientDAO.get((long) 1)));
-        System.out.println("------------");
-
-        //for (OrderProduct orderProduct : orderProductDAO.getOrderProduct((long) 2))
-        //    System.out.println("id продуктов во 2 заказе = " + orderProduct.getId());
-        //System.out.println("------------");
-        //System.out.println(productDAO.getProducts("aqua"));
-
-        System.out.println("--------CollectionDAO----------");
-        CollectionDaoImpl collectionDao = new CollectionDaoImpl();
-        System.out.println(collectionDao.getCollectionImage("Venis", "Aqua"));
-        //collectionDao.add(new Collection("Venis","Aqua","Aqua.jpg"));
-        System.out.println("--------ClientAdress----------");
-        ClientAdressDaoImpl clientAdressDao = new ClientAdressDaoImpl();
-        System.out.println(clientAdressDao.getAdress(clientDAO.get((long) 1)));
-        System.out.println("--------ClientDAO----------");
-        System.out.println(URLEncoder.encode("миша", "UTF-8"));
-        String str=URLEncoder.encode("миша", "UTF-8");
-        System.out.println(URLDecoder.decode(str,"UTF-8"));
-        System.out.println(URLEncoder.encode("2@2.2", "UTF-8"));
-        String str2=URLEncoder.encode("2@2.2", "UTF-8");
-        System.out.println(URLDecoder.decode(str2,"UTF-8"));
-        }
-
-    public void testClientDAO() throws Exception {
-        //выводим множество адресов
-        System.out.println(clientDAO.get((long) 2).getClientAdressSet());
-        //для каждого адреса выводим город
-        for (ClientAdress clientAdress : clientDAO.get((long) 2).getClientAdressSet()) {
-            System.out.println(clientAdress.getCity());
-        }
-        //выводим заказы для 1 клиента
-        System.out.println(clientDAO.get((long) 2).getOrders());
-        //выводим имя по номеру заказа
-        for (Orders orders : clientDAO.get((long) 2).getOrders()) {
-            System.out.println(orders.getClient().getName());
-        }
-
-
+    public void mockCreation() {
+        Bucket bucket = Mockito.mock(Bucket.class);
     }
+
+    @Test
+    public void spyCreation() {
+        Bucket bucket = Mockito.spy(new Bucket());
+    }
+
 }
 

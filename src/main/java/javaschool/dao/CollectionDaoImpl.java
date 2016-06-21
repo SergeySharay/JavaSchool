@@ -1,5 +1,4 @@
 /**
- * Dao class for Collection entity.
  *
  * @author Sergey Sharay
  * @version 1.0
@@ -10,7 +9,9 @@ package javaschool.dao;
 import javaschool.entity.Collection;
 
 import javax.persistence.TypedQuery;
-
+/**
+ * @deprecated
+ */
 public class CollectionDaoImpl extends GenericDaoImpl<Collection, Long> implements CollectionDao {
     public CollectionDaoImpl() {
         super(Collection.class);

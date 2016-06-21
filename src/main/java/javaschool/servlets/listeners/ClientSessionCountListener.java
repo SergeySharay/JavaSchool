@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 public class ClientSessionCountListener implements HttpSessionListener {
-    private static int activeSessions;
+    private static int activeSessions=0;
     public static int getActiveSessions(){
         return activeSessions;
     }

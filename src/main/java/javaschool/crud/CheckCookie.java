@@ -1,3 +1,10 @@
+/**
+ * A checkCookie.class is deprecated.
+ *
+ * @author Sergey Sharay
+ * @version 1.0
+ * @deprecated
+ */
 package javaschool.crud;
 
 import javaschool.dao.ClientAdressDaoImpl;
@@ -11,7 +18,9 @@ import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Map;
-
+/**
+ * @deprecated
+ */
 public class CheckCookie {
     private static String user_name = "";
     private static String pass_word = "";

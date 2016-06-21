@@ -6,13 +6,15 @@
  */
 package javaschool.dao;
 
+import org.apache.log4j.Logger;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.io.Serializable;
 
 public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
-
+    protected static Logger logger = Logger.getLogger(ClientAdressDaoImpl.class);
     private Class<T> type;
     /**
      * entityManagerFactory.
@@ -31,6 +33,7 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
 
     /**
      * Class constructor.
+     * @param type An Entity.class
      */
     public GenericDaoImpl(Class<T> type) {
         this.type = type;
@@ -60,8 +63,8 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
 
     /**
      * Delete an entity from DB by Id.
-     *
      * @param id Id from DB
+     *
      */
     public void delete(PK id) {
         //EntityManager entityManager = entityManagerFactory.createEntityManager();

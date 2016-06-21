@@ -11,10 +11,14 @@ import javaschool.entity.ClientAdress;
 
 import javax.persistence.TypedQuery;
 
+/**
+ * Dao class for ClientAdress entity.
+ */
 public class ClientAdressDaoImpl extends GenericDaoImpl<ClientAdress, Long>
         implements ClientAdressDao {
+
     /**
-     * Class constructor
+     * Class constructor.
      */
     public ClientAdressDaoImpl() {
         super(ClientAdress.class);
@@ -25,23 +29,23 @@ public class ClientAdressDaoImpl extends GenericDaoImpl<ClientAdress, Long>
      * @return a ClientAdress entity
      */
     public ClientAdress getAdress(final Client client) {
-        //EntityManager entityManager = entityManagerFactory.createEntityManager();
+//EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             entityManager.getTransaction().begin();
             TypedQuery<ClientAdress> namedQuery = entityManager.createNamedQuery("ClientAdress.getAdress", ClientAdress.class);
             namedQuery.setParameter("client", client);
             entityManager.getTransaction().commit();
-            return namedQuery.getSingleResult();
+            if (namedQuery.getSingleResult() != null) {
+                return namedQuery.getSingleResult();
+            } else {
+                return new ClientAdress();
+            }
         } finally {
             if (entityManager.getTransaction().isActive()) {
                 entityManager.getTransaction().rollback();
+
             }
             //entityManager.close();
         }
-
-    }
-
-    public void close() {
-        entityManager.close();
     }
 }

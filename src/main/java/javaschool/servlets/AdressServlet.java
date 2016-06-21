@@ -39,7 +39,7 @@ public class AdressServlet extends HttpServlet {
         if (!req.getParameter("zipcode").equals("")) {
             clientAdress.setZipcode(Long.parseLong(req.getParameter("zipcode")));
         }
-        httpSession.setAttribute("clientAdress",clientAdressDao.getAdress(client));
+        httpSession.setAttribute("clientAdress",clientAdress);
         clientAdressDao.update(clientAdress);
         resp.sendRedirect("Cabinet");
     }

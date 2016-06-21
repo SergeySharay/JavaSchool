@@ -8,6 +8,78 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>javaschool.servlets.filters.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <servlet-name>AdminOrdersServlet</servlet-name>
+        <servlet-name>AdminClientsServlet</servlet-name>
+        <servlet-name>AdminOrderPageServlet</servlet-name>
+        <servlet-name>AdminProductAddServlet</servlet-name>
+        <servlet-name>AdminProductPageServlet</servlet-name>
+        <servlet-name>AdminProductsServlet</servlet-name>
+        <servlet-name>AdressServlet</servlet-name>
+        <servlet-name>CabinetServlet</servlet-name>
+        <servlet-name>GetOrderServlet</servlet-name>
+        <servlet-name>HistoryServlet</servlet-name>
+        <servlet-name>PrivateServlet</servlet-name>
+        <servlet-name>StatisticServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/admin.jsp</url-pattern>
+        <url-pattern>/adminclients.jsp</url-pattern>
+        <url-pattern>/adminorderpage.jsp</url-pattern>
+        <url-pattern>/adminorders.jsp</url-pattern>
+        <url-pattern>/adminproductadd.jsp</url-pattern>
+        <url-pattern>/adminproductpage.jsp</url-pattern>
+        <url-pattern>/adminproducts.jsp</url-pattern>
+        <url-pattern>/adress.jsp</url-pattern>
+        <url-pattern>/cabinet.jsp</url-pattern>
+        <url-pattern>/getorder.jsp</url-pattern>
+        <url-pattern>/orders.jsp</url-pattern>
+        <url-pattern>/private.jsp</url-pattern>
+        <url-pattern>/statistic.jsp</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>UserFilter</filter-name>
+        <filter-class>javaschool.servlets.filters.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <servlet-name>AdminOrdersServlet</servlet-name>
+        <servlet-name>AdminClientsServlet</servlet-name>
+        <servlet-name>AdminOrderPageServlet</servlet-name>
+        <servlet-name>AdminProductAddServlet</servlet-name>
+        <servlet-name>AdminProductPageServlet</servlet-name>
+        <servlet-name>AdminProductsServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <url-pattern>/admin.jsp</url-pattern>
+        <url-pattern>/adminclients.jsp</url-pattern>
+        <url-pattern>/adminorderpage.jsp</url-pattern>
+        <url-pattern>/adminorders.jsp</url-pattern>
+        <url-pattern>/adminproductadd.jsp</url-pattern>
+        <url-pattern>/adminproductpage.jsp</url-pattern>
+        <url-pattern>/adminproducts.jsp</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>javaschool.servlets.listeners.ClientSessionCountListener</listener-class>
+    </listener>
+    RepeatServlet
+    <servlet>
+        <servlet-name>RepeatServlet</servlet-name>
+        <servlet-class>javaschool.servlets.RepeatServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RepeatServlet</servlet-name>
+        <url-pattern>/Repeat</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>StatisticServlet</servlet-name>
         <servlet-class>javaschool.servlets.StatisticServlet</servlet-class>
