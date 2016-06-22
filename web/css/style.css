@@ -155,3 +155,9 @@ a.spoiler.collapsed:after{
 .feat{
     display: inline-block;
 }
+#buttons{
+    padding-left: 50px;
+}
+.count_button {position:relative;}
+.plus:before {}
+.minus:before {}

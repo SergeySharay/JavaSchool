@@ -30,7 +30,7 @@ public class OrderProduct {
         Id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Orders getOrderId() {
         return orderId;
     }
@@ -38,7 +38,7 @@ public class OrderProduct {
         this.orderId = orderId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Product getProductId() {
         return productId;
     }

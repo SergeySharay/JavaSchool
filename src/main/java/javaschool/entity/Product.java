@@ -45,7 +45,7 @@ public class Product{
         this.id = id;
     }
 
-    @OneToMany(targetEntity=OrderProduct.class, mappedBy="productId", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity=OrderProduct.class, mappedBy="productId", fetch = FetchType.EAGER)
     public Set<OrderProduct> getOrderProduct() {
         return orderProduct;
     }

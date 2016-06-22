@@ -30,7 +30,7 @@ public class ClientAdress {
         this.clientAdressId = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id")
     public Client getClient() {
         return client;

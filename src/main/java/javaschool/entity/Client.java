@@ -45,7 +45,7 @@ public class Client {
         this.clientId = clientId;
     }
 
-    @OneToMany(targetEntity = ClientAdress.class, mappedBy = "client", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = ClientAdress.class, mappedBy = "client", fetch = FetchType.EAGER)
     public Set<ClientAdress> getClientAdressSet() {
         return clientAdressSet;
     }
@@ -54,7 +54,7 @@ public class Client {
         this.clientAdressSet = clientAdressSet;
     }
 
-    @OneToMany(targetEntity = Orders.class, mappedBy = "client", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Orders.class, mappedBy = "client", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     public Set<Orders> getOrders() {
         return orders;
     }

@@ -1,5 +1,4 @@
 /**
- *
  * @author Sergey Sharay
  * @version 1.0
  */
@@ -8,7 +7,9 @@ package javaschool.dao;
 
 import javaschool.entity.Collection;
 
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+
 /**
  * @deprecated
  */
@@ -18,7 +19,7 @@ public class CollectionDaoImpl extends GenericDaoImpl<Collection, Long> implemen
     }
 
     public String getCollectionImage(final String brand, final String collection) {
-        //EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityManager entityManager = getEntityManager();
         try {
             entityManager.getTransaction().begin();
             TypedQuery<Collection> namedQuery = entityManager.createNamedQuery("Collection.getCollectionOfBrand", Collection.class);
@@ -36,9 +37,5 @@ public class CollectionDaoImpl extends GenericDaoImpl<Collection, Long> implemen
             }
             //entityManager.close();
         }
-    }
-
-    public void close() {
-        entityManager.close();
     }
 }

@@ -6,6 +6,7 @@ import javaschool.entity.Client;
 import javaschool.entity.OrderProduct;
 import javaschool.entity.Orders;
 import javaschool.entity.Product;
+import org.apache.commons.lang3.time.DateUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -52,12 +53,15 @@ public class StatisticServlet extends HttpServlet {
         List<Orders> ordersListDate = new LinkedList<Orders>();
         List<Orders> ordersListDateMonth = new LinkedList<Orders>();
         for (Orders orders : ordersList) {
-            if (orders.getOrderDate().getTime() > (new Date().getTime()) - 24 * 60 * 60 * 1000 * 7) {
+
+           // orders.getOrderDate().compareTo(DateUtils.addWeeks(new Date(), 4));
+
+            if (orders.getOrderDate().compareTo(DateUtils.addWeeks(new Date(), -1)) > 0) {
                 ordersListDate.add(orders);
             }
         }
         for (Orders orders : ordersList) {
-            if (orders.getOrderDate().getTime() > (new Date().getTime()) - 24 * 60 * 60 * 1000 * 21) {
+            if (orders.getOrderDate().compareTo(DateUtils.addWeeks(new Date(), -4)) > 0) {
                 ordersListDateMonth.add(orders);
             }
         }

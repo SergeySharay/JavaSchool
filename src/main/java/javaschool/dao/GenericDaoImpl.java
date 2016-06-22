@@ -6,39 +6,28 @@
  */
 package javaschool.dao;
 
+import javaschool.em.EntityManagerAc;
+import javaschool.em.EntityManagerAcFactory;
 import org.apache.log4j.Logger;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.io.Serializable;
 
 public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
     protected static Logger logger = Logger.getLogger(ClientAdressDaoImpl.class);
+
     private Class<T> type;
     /**
-     * entityManagerFactory.
-     */
-    public static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("clients");
-    /**
-     * entityManager.
-     */
-    public EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-    /**
      * Class constructor.
-     */
-    public GenericDaoImpl() {
-    }
-
-    /**
-     * Class constructor.
+     *
      * @param type An Entity.class
      */
     public GenericDaoImpl(Class<T> type) {
         this.type = type;
+        //this.entityManagerFactory = entityManagerFactory;
     }
-
+    public EntityManagerAc getEntityManager() {
+        return EntityManagerAcFactory.createEntityManagerAc();
+    }
     /**
      * Add an entity to DB
      *
@@ -46,41 +35,26 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
      * @return An entity from DB after adding
      */
     public T add(T object) {
-        //EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
+
+        try (EntityManagerAc entityManager = getEntityManager()) {
             entityManager.getTransaction().begin();
             T objectFromDB = entityManager.merge(object);
             entityManager.getTransaction().commit();
             return objectFromDB;
-        } finally {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            //entityManager.close();
         }
-
     }
-
     /**
      * Delete an entity from DB by Id.
-     * @param id Id from DB
      *
+     * @param id Id from DB
      */
     public void delete(PK id) {
-        //EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
+        try (EntityManagerAc entityManager = getEntityManager()) {
             entityManager.getTransaction().begin();
             entityManager.remove(get(id));
             entityManager.getTransaction().commit();
-        } finally {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            //entityManager.close();
         }
-
     }
-
     /**
      * Get an entity from DB by Id.
      *
@@ -88,38 +62,20 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
      * @return An Entity from DB.
      */
     public T get(PK id) {
-        //EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
+        try (EntityManagerAc entityManager = getEntityManager()) {
             return entityManager.find(type, id);
-        } finally {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            //entityManager.close();
         }
     }
-
     /**
      * Update current Entity in DB.
      *
      * @param object An Entity for update
      */
     public void update(T object) {
-        //EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
+        try (EntityManagerAc entityManager = getEntityManager()) {
             entityManager.getTransaction().begin();
             entityManager.merge(object);
             entityManager.getTransaction().commit();
-        } finally {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            //entityManager.close();
         }
     }
-
-    public void close() {
-        entityManager.close();
-    }
-
 }

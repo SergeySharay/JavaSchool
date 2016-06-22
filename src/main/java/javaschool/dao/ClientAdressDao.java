@@ -6,6 +6,7 @@ package javaschool.dao;
 
 import javaschool.entity.Client;
 import javaschool.entity.ClientAdress;
+
 /**
  * Dao interface for ClientAdress entity.
  */

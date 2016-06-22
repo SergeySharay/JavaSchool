@@ -40,10 +40,11 @@
                     </td>
                     <td><%=productDao.get((Long) entry.getKey()).getPrice()%>
                     </td>
-                    <td><%=entry.getValue()%>
-                        <form method="GET" action="Bucket">
-                            <input type="image" src="../img/plus.png" name="Quantity" value="1">
-                            <input type="image" src="../img/minus.png" name="Quantity" value="-1">
+                    <td>
+                        <form method="GET" action="Bucket" class="count_button">
+                            <input class="btn btn-danger" type="submit"  name="Quantity" value="-1">
+                            <%=entry.getValue()%>
+                            <input  class="btn btn-success" type="submit" name="Quantity" value="+1">
                             <input type="hidden" name="ProductId" value="<%=entry.getKey()%>">
                         </form>
                     </td>
@@ -63,8 +64,9 @@
                 if (session.getAttribute("CheckCookie") == "true") {
                     if (sum > 0) {
                     %>
-                    <form method="get" action="../getorder.jsp" id="getorder"></form>
-                    <button type="submit" form="getorder" class="btn btn-primary">Оформить заказ</button>
+
+            <form method="get" action="../getorder.jsp" id="getorder"></form>
+            <button type="submit" form="getorder" class="btn btn-primary">Оформить заказ</button>
                 <%
                         } else {
                             out.print("Для того что бы оформить заказ, необходимо добавить товары в корзину");

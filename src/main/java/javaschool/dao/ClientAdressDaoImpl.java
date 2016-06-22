@@ -6,6 +6,7 @@
  */
 package javaschool.dao;
 
+import javaschool.em.EntityManagerAc;
 import javaschool.entity.Client;
 import javaschool.entity.ClientAdress;
 
@@ -14,8 +15,7 @@ import javax.persistence.TypedQuery;
 /**
  * Dao class for ClientAdress entity.
  */
-public class ClientAdressDaoImpl extends GenericDaoImpl<ClientAdress, Long>
-        implements ClientAdressDao {
+public class ClientAdressDaoImpl extends GenericDaoImpl<ClientAdress, Long> implements ClientAdressDao {
 
     /**
      * Class constructor.
@@ -29,8 +29,7 @@ public class ClientAdressDaoImpl extends GenericDaoImpl<ClientAdress, Long>
      * @return a ClientAdress entity
      */
     public ClientAdress getAdress(final Client client) {
-//EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
+        try (EntityManagerAc entityManager = getEntityManager()) {
             entityManager.getTransaction().begin();
             TypedQuery<ClientAdress> namedQuery = entityManager.createNamedQuery("ClientAdress.getAdress", ClientAdress.class);
             namedQuery.setParameter("client", client);
@@ -40,12 +39,6 @@ public class ClientAdressDaoImpl extends GenericDaoImpl<ClientAdress, Long>
             } else {
                 return new ClientAdress();
             }
-        } finally {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-
-            }
-            //entityManager.close();
         }
     }
 }
