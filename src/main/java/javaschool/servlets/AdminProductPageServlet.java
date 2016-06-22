@@ -16,10 +16,11 @@ public class AdminProductPageServlet extends HttpServlet {
         HttpSession httpSession = req.getSession();
         ProductDaoImpl productDao = new ProductDaoImpl();
         Product product = productDao.get(Long.parseLong(req.getParameter("productId")));
-        httpSession.setAttribute("productPage",product);
+        httpSession.setAttribute("productPage", product);
         RequestDispatcher view = req.getRequestDispatcher("adminproductpage.jsp");
         view.forward(req, resp);
     }
+
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         HttpSession httpSession = req.getSession();
@@ -57,12 +58,11 @@ public class AdminProductPageServlet extends HttpServlet {
             product.setPicture(req.getParameter("picture"));
         }
         productDao.update(product);
-        httpSession.setAttribute("productPage",product);
+        httpSession.setAttribute("productPage", product);
         RequestDispatcher view = req.getRequestDispatcher("adminproductpage.jsp");
         view.forward(req, resp);
     }
 
 
-
-    }
+}
 

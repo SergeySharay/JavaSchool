@@ -27,6 +27,7 @@ public class CollectionServlet extends HttpServlet {
         RequestDispatcher view = req.getRequestDispatcher("collection.jsp");
         view.forward(req, resp);
     }
+
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductDaoImpl productDao = new ProductDaoImpl();
         if (Strings.isNullOrEmpty(req.getParameter("Brand"))) {

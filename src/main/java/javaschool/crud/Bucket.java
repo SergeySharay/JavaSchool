@@ -1,5 +1,4 @@
 /**
- *
  * @author Sergey Sharay
  * @version 1.0
  */
@@ -18,6 +17,7 @@ import java.util.Map;
 public class Bucket {
     private static Map<Long, Integer> order;
     private static Logger logger = Logger.getLogger(Bucket.class);
+
     /**
      * If Bucket is empty method create new Map(Long, Integer) where
      * Long - product id,
@@ -34,10 +34,10 @@ public class Bucket {
             order = new LinkedHashMap<Long, Integer>();
             logger.info("new LinkedHashMap<Long, Integer>()");
         } else {
-            try{
-            order = (Map<Long, Integer>) httpSession.getAttribute("Order");
-            logger.info("LinkedHashMap<Long, Integer>()from httpSession");
-            }catch (Exception e){
+            try {
+                order = (Map<Long, Integer>) httpSession.getAttribute("Order");
+                logger.info("LinkedHashMap<Long, Integer>()from httpSession");
+            } catch (Exception e) {
                 logger.error(e);
                 e.printStackTrace();
             }

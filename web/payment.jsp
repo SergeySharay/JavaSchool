@@ -24,8 +24,10 @@
                         <div class="form-group">
                             <label for="cardNumber" class="privatetable">
                                 Номер карты</label>
+
                             <div class="input-group">
-                                <input type="text" class="form-control" id="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX"
+                                <input type="text" class="form-control" id="cardNumber"
+                                       placeholder="XXXX-XXXX-XXXX-XXXX"
                                        required autofocus pattern="[0-9]{16}"/>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                             </div>
@@ -35,13 +37,14 @@
                                 <div class="form-group">
                                     <label for="expityMonth" class="privatetable">
                                         Срок действия карты</label>
+
                                     <div class="col-xs-6 col-lg-6 pl-ziro">
                                         <input type="text" class="form-control" id="expityMonth"
-                                               pattern="[1-3]{1}[0-9]{1}" placeholder="MM" required />
+                                               pattern="[1-3]{1}[0-9]{1}" placeholder="MM" required/>
                                     </div>
                                     <div class="col-xs-6 col-lg-6 pl-ziro">
                                         <input type="text" class="form-control" id="expityYear"
-                                               pattern="[0-9]{2}" placeholder="YY" required /></div>
+                                               pattern="[0-9]{2}" placeholder="YY" required/></div>
                                 </div>
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
@@ -49,7 +52,7 @@
                                     <label for="cvCode">
                                         CV CODE</label>
                                     <input type="password" class="form-control"
-                                           pattern="[0-9]{3}"id="cvCode" placeholder="CVV" required />
+                                           pattern="[0-9]{3}" id="cvCode" placeholder="CVV" required/>
                                 </div>
                             </div>
                         </div>

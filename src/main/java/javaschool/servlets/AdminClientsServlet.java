@@ -15,6 +15,7 @@ import java.util.List;
 
 public class AdminClientsServlet extends HttpServlet {
     private static Logger logger = Logger.getLogger(AdminClientsServlet.class);
+
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Call AdminClientsServlet doGet method");
         logger.info("Call req.getSession() method");

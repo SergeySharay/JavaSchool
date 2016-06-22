@@ -23,7 +23,6 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
      */
     public GenericDaoImpl(Class<T> type) {
         this.type = type;
-        //this.entityManagerFactory = entityManagerFactory;
     }
     public EntityManagerAc getEntityManager() {
         return EntityManagerAcFactory.createEntityManagerAc();

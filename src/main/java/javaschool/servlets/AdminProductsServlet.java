@@ -17,7 +17,8 @@ public class AdminProductsServlet extends HttpServlet {
         HttpSession httpSession = req.getSession();
         ProductDaoImpl productDao = new ProductDaoImpl();
         List<Product> productList = productDao.getProducts();
-        httpSession.setAttribute("productList",productList);
+        httpSession.setAttribute("productList", productList);
         RequestDispatcher view = req.getRequestDispatcher("adminproducts.jsp");
         view.forward(req, resp);
-    }}
+    }
+}

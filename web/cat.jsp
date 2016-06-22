@@ -46,8 +46,8 @@
 
                     <div class="caption">
                         <form role="form" method="get" action="Collection">
-                            <div id="blok1"  class="btn btn-primary">
-                            ${collection}
+                            <div id="blok1" class="btn btn-primary">
+                                    ${collection}
                             </div>
                             <p align="right">
                                 <input type="submit" value="Подробнее" class="btn btn-info buyitem">
@@ -60,9 +60,6 @@
         </c:forEach>
     </div>
 </div>
-
-
-<div id="bucket"><a href="bucket.jsp"><img src="../img/bucket.png"></a></div>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -12,6 +12,7 @@ public class UserFilter implements Filter {
     public UserFilter() {
         super();
     }
+
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
@@ -20,16 +21,15 @@ public class UserFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession httpSession = req.getSession();
-        Client client = (Client)httpSession.getAttribute("User");
-        //Integer permission = client.getPermission();
-        if(client!=null && client.getPermission()!=1){
+        Client client = (Client) httpSession.getAttribute("User");
+        if (client != null && client.getPermission() != 1) {
             RequestDispatcher view = req.getRequestDispatcher("index.jsp");
             resp.setCharacterEncoding("UTF-8");
             view.include(req, resp);
-            //resp.sendRedirect("index.jsp");
-        }else{
+        } else {
 
-            chain.doFilter(req, resp);}
+            chain.doFilter(req, resp);
+        }
 
     }
 

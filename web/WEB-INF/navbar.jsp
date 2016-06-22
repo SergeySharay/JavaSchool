@@ -26,7 +26,7 @@
                         if (session.getAttribute("CheckCookie") == "true") {
                     %>
                     <li><a href="Cabinet"><i class="glyphicon glyphicon-user"></i>
-                    <c:out value="${User.email}"/>
+                        <c:out value="${User.email}"/>
                     </a></li>
                     <li><a href="Logout"><i class="glyphicon glyphicon-off"></i> Выйти</a></li>
                     <%} else {%>
@@ -37,3 +37,4 @@
         </div>
     </div>
 </div>
+<div id="bucket"><a href="bucket.jsp"><img src="../img/bucket.png"></a></div>

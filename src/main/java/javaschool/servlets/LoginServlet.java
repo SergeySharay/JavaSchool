@@ -18,13 +18,11 @@ public class LoginServlet extends HttpServlet {
         HttpSession httpSession = req.getSession();
         ClientDaoImpl clientDao = new ClientDaoImpl();
         ClientAdressDaoImpl clientAdressDao = new ClientAdressDaoImpl();
-        //httpSession.setAttribute("CheckCookie", "false");
         DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String username = req.getParameter("user_name");
         String password = req.getParameter("pass_word");
         resp.addCookie(new Cookie("user_name", URLEncoder.encode(username, "utf-8")));
         resp.addCookie(new Cookie("pass_word", URLEncoder.encode(password, "utf-8")));
-        //CheckCookie.check(req);
         Map<String, String> userpass = clientDao.getClientEmailPassword();
         if (userpass.containsKey(username) && userpass.get(username).equals(password)) {
 
@@ -39,9 +37,5 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher view = req.getRequestDispatcher("login.jsp");
             view.forward(req, resp);
         }
-        //resp.sendRedirect("index.jsp");
-
-        //RequestDispatcher view = req.getRequestDispatcher("index.jsp");
-        //view.forward(req, resp);
     }
 }

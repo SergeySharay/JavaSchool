@@ -19,10 +19,7 @@ public class HistoryServlet extends HttpServlet {
         Client client = (Client) httpSession.getAttribute("User");
         ClientDaoImpl clientDao = new ClientDaoImpl();
         Set<Orders> ordersSet = clientDao.getOrders(client);
-
-        //Set<Orders> ordersSet = client.getOrders();
         httpSession.setAttribute("OrdersSet", ordersSet);
-
         RequestDispatcher view = req.getRequestDispatcher("orders.jsp");
         view.forward(req, resp);
     }

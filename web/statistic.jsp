@@ -24,13 +24,13 @@
                         <th>Наименование</th>
                         <th>Сколько куплено</th>
                     </tr>
-                <c:forEach items="${productLongMap}" var="product">
-                    <tr>
-                        <td>${product.key.id}</td>
-                        <td>${product.key.name}</td>
-                        <td>${product.value}</td>
-                    </tr>
-                </c:forEach>
+                    <c:forEach items="${productLongMap}" var="product">
+                        <tr>
+                            <td>${product.key.id}</td>
+                            <td>${product.key.name}</td>
+                            <td>${product.value}</td>
+                        </tr>
+                    </c:forEach>
                 </table>
             </div>
         </div>
@@ -87,7 +87,7 @@
     <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Заказы за 3 недели
+                Заказы за 4 недели
             </div>
             <div class="panel-body privatetable">
                 <table class="table">

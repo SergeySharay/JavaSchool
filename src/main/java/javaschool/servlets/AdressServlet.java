@@ -20,7 +20,6 @@ public class AdressServlet extends HttpServlet {
         ClientAdress clientAdress = clientAdressDao.getAdress(client);
 
 
-
         if (!req.getParameter("country").equals("")) {
             clientAdress.setCountry(req.getParameter("country"));
         }
@@ -39,7 +38,7 @@ public class AdressServlet extends HttpServlet {
         if (!req.getParameter("zipcode").equals("")) {
             clientAdress.setZipcode(Long.parseLong(req.getParameter("zipcode")));
         }
-        httpSession.setAttribute("clientAdress",clientAdress);
+        httpSession.setAttribute("clientAdress", clientAdress);
         clientAdressDao.update(clientAdress);
         resp.sendRedirect("Cabinet");
     }

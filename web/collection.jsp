@@ -47,13 +47,13 @@
 
                     <div class="caption">
                         <div id="blok4">
-                        <form role="form" method="post" action="ProductPage">
+                            <form role="form" method="post" action="ProductPage">
 
-                            <input type="submit" value="Инфо" class="btn btn-info">
-                            <input type="hidden" name="Product" value="<c:out value="${product.id}"/>">
-                            <input type="hidden" name="Brand" value="<c:out value="${Brand}"/>">
-                            <input type="hidden" name="Collection" value="<c:out value="${Collection}"/>">
-                        </form>
+                                <input type="submit" value="Инфо" class="btn btn-info">
+                                <input type="hidden" name="Product" value="<c:out value="${product.id}"/>">
+                                <input type="hidden" name="Brand" value="<c:out value="${Brand}"/>">
+                                <input type="hidden" name="Collection" value="<c:out value="${Collection}"/>">
+                            </form>
                         </div>
                         <form role="form" method="POST" action="Order">
                             <div id="blok1" class="btn btn-primary">
@@ -76,7 +76,6 @@
     </div>
 </div>
 
-<div id="bucket"><a href="bucket.jsp"><img src="../img/bucket.png"></a></div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

@@ -78,15 +78,15 @@
                     </table>
 
                     <div id="buttons">
-                    <form method="post" action="Repeat" class="privatetable feat">
-                        <input type="submit" class="btn btn-primary" value="Повторить заказ">
-                        <input type="hidden" name="orderId" value="<c:out value="${orders.id}"/>">
-                    </form>
+                        <form method="post" action="Repeat" class="privatetable feat">
+                            <input type="submit" class="btn btn-primary" value="Повторить заказ">
+                            <input type="hidden" name="orderId" value="<c:out value="${orders.id}"/>">
+                        </form>
 
-                    <form method="get" action="payment.jsp" class="privatetable feat">
-                        <input type="submit" class="btn btn-primary" value="Оплатить заказ">
-                        <input type="hidden" name="summer" value="<c:out value="${sum}"/>">
-                    </form>
+                        <form method="get" action="payment.jsp" class="privatetable feat">
+                            <input type="submit" class="btn btn-primary" value="Оплатить заказ">
+                            <input type="hidden" name="summer" value="<c:out value="${sum}"/>">
+                        </form>
                     </div>
 
                 </div>

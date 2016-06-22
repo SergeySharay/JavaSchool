@@ -16,11 +16,11 @@ public class ProductPageServlet extends HttpServlet {
 
         ProductDaoImpl productDao = new ProductDaoImpl();
         Product product = productDao.get(Long.parseLong(req.getParameter("Product")));
-        req.setAttribute("Product",product);
-        req.setAttribute("Brand",req.getParameter("Brand"));
-        req.setAttribute("Collection",req.getParameter("Collection"));
+        req.setAttribute("Product", product);
+        req.setAttribute("Brand", req.getParameter("Brand"));
+        req.setAttribute("Collection", req.getParameter("Collection"));
 
         RequestDispatcher view = req.getRequestDispatcher("product.jsp");
-        view.forward(req,resp);
+        view.forward(req, resp);
     }
 }

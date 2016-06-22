@@ -35,7 +35,6 @@ public class CollectionDaoImpl extends GenericDaoImpl<Collection, Long> implemen
             if (entityManager.getTransaction().isActive()) {
                 entityManager.getTransaction().rollback();
             }
-            //entityManager.close();
         }
     }
 }

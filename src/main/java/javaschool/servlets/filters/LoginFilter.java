@@ -10,6 +10,7 @@ public class LoginFilter implements Filter {
     public LoginFilter() {
         super();
     }
+
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
@@ -18,16 +19,14 @@ public class LoginFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession httpSession = req.getSession();
-        //Client client = (Client)httpSession.getAttribute("User");
-        //Integer permission = client.getPermission();
-        if((httpSession.getAttribute("CheckCookie")!="true")){
+        if ((httpSession.getAttribute("CheckCookie") != "true")) {
             RequestDispatcher view = req.getRequestDispatcher("index.jsp");
             resp.setCharacterEncoding("UTF-8");
             view.include(req, resp);
-            //resp.sendRedirect("index.jsp");
-        }else{
+        } else {
 
-        chain.doFilter(req, resp);}
+            chain.doFilter(req, resp);
+        }
 
     }
 

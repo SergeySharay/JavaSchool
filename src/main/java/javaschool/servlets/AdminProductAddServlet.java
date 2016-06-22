@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class AdminProductAddServlet extends HttpServlet {
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         ProductDaoImpl productDao = new ProductDaoImpl();
         Product product = new Product();

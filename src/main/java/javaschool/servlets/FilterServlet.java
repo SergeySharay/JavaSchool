@@ -27,7 +27,7 @@ public class FilterServlet extends HttpServlet {
         }
 
         if (!Strings.isNullOrEmpty(req.getParameter("col"))) {
-            collection = "'" + req.getParameter("col") +"'";
+            collection = "'" + req.getParameter("col") + "'";
         } else {
             collection = null;
         }
@@ -71,7 +71,7 @@ public class FilterServlet extends HttpServlet {
             length = null;
         }
         if (!Strings.isNullOrEmpty(req.getParameter("color"))) {
-            color = "'"+ req.getParameter("color") + "'";
+            color = "'" + req.getParameter("color") + "'";
         } else {
             color = null;
         }
@@ -79,13 +79,13 @@ public class FilterServlet extends HttpServlet {
             width = req.getParameter("width");
             if (req.getParameter("width").equals("1")) {
                 length = "0 AND 10";
-            }else if (req.getParameter("width").equals("2")) {
+            } else if (req.getParameter("width").equals("2")) {
                 length = "10 AND 20";
-            }else if (req.getParameter("width").equals("3")) {
+            } else if (req.getParameter("width").equals("3")) {
                 length = "20 AND 30";
-            }else if (req.getParameter("width").equals("4")) {
+            } else if (req.getParameter("width").equals("4")) {
                 length = "30 AND 100";
-            }else width = null;
+            } else width = null;
         } else {
             width = null;
         }

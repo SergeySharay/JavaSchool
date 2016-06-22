@@ -10,13 +10,12 @@ import java.io.IOException;
 public class CabinetServlet extends HttpServlet {
     public void doGet(final HttpServletRequest req, final HttpServletResponse resp)
             throws ServletException, IOException {
-        //CheckCookie.check(req);
         RequestDispatcher view = req.getRequestDispatcher("cabinet.jsp");
         view.forward(req, resp);
     }
+
     public void doPost(final HttpServletRequest req, final HttpServletResponse resp)
             throws ServletException, IOException {
-        //CheckCookie.check(req);
         RequestDispatcher view = req.getRequestDispatcher("cabinet.jsp");
         view.forward(req, resp);
     }

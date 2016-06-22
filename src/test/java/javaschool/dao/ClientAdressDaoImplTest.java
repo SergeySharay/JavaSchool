@@ -18,8 +18,8 @@ public class ClientAdressDaoImplTest {
     public void setUp() throws Exception {
         clientAdressDao = new ClientAdressDaoImpl();
         entityManagerMock = Mockito.mock(EntityManager.class);
-        //clientAdressDao.entityManager = entityManagerMock;
     }
+
     @org.junit.Ignore
     @Test
     public void testGetAdress() throws Exception {

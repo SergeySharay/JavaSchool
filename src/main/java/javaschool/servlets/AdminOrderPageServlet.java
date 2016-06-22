@@ -16,10 +16,11 @@ public class AdminOrderPageServlet extends HttpServlet {
         HttpSession httpSession = req.getSession();
         OrdersDaoImpl ordersDao = new OrdersDaoImpl();
         Orders order = ordersDao.get(Long.parseLong(req.getParameter("orderId")));
-        httpSession.setAttribute("orderPage",order);
+        httpSession.setAttribute("orderPage", order);
         RequestDispatcher view = req.getRequestDispatcher("adminorderpage.jsp");
         view.forward(req, resp);
     }
+
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         HttpSession httpSession = req.getSession();
@@ -40,7 +41,7 @@ public class AdminOrderPageServlet extends HttpServlet {
             order.setOrderStatus(req.getParameter("orderstatus"));
         }
         ordersDao.update(order);
-        httpSession.setAttribute("orderPage",order);
+        httpSession.setAttribute("orderPage", order);
         RequestDispatcher view = req.getRequestDispatcher("adminorderpage.jsp");
         view.forward(req, resp);
     }

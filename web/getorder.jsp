@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="javaschool.dao.ProductDaoImpl" %>
 <%@ page import="java.util.Map" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="windows-1251"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="windows-1251" %>
 <html>
 <head>
     <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
@@ -21,7 +21,7 @@
                         Map<Long, Integer> products = (Map<Long, Integer>) session.getAttribute("Order");
                         ProductDaoImpl productDao = new ProductDaoImpl();
                         for (Map.Entry entry : products.entrySet())
-                        sum += (productDao.get((Long) entry.getKey()).getPrice() * (Integer) entry.getValue());
+                            sum += (productDao.get((Long) entry.getKey()).getPrice() * (Integer) entry.getValue());
                     %>
 
                     <p>Ваш заказ на сумму, рублей: <%=sum%>
@@ -65,7 +65,8 @@
 
                                 <div class="controls" id="delivery">
                                     <label class="radio">
-                                        <input type="radio" name="Rad2" id="optionsRadios4" value="Самовывоз" checked="">
+                                        <input type="radio" name="Rad2" id="optionsRadios4" value="Самовывоз"
+                                               checked="">
                                         Самовывоз
                                     </label>
                                     <label class="radio">
@@ -127,7 +128,8 @@
                             <td>Почтовый индекс</td>
                             <td><c:out value="${clientAdress.zipcode}"/></td>
                         </tr>
-                    </table><form action="adress.jsp">
+                    </table>
+                    <form action="adress.jsp">
                         <button type="submit" value="" class="btn btn-primary">Изменить адрес</button>
                     </form>
                 </div>
@@ -137,9 +139,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><p>Подверждение заказа</p></div>
                 <div class="panel-body privatetable">
-                    <%if (sum>0){%>
+                    <%if (sum > 0) {%>
                     <button type="submit" form="nextorder" class="btn btn-primary">Оформить заказ</button>
-                    <%}else{ out.print("Добавьте товары в корзину");}%>
+                    <%
+                        } else {
+                            out.print("Добавьте товары в корзину");
+                        }
+                    %>
                 </div>
             </div>
         </div>

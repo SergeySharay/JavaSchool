@@ -26,7 +26,7 @@ public class GetOrderServlet extends HttpServlet {
         OrderProductDaoImpl orderProductDao = new OrderProductDaoImpl();
         ProductDaoImpl productDao = new ProductDaoImpl();
         Orders order = new Orders();
-        Client client = (Client)httpSession.getAttribute("User");
+        Client client = (Client) httpSession.getAttribute("User");
         order.setClient(client);
         order.setPayment(req.getParameter("Rad1"));
         order.setDelivery(req.getParameter("Rad2"));
@@ -35,15 +35,15 @@ public class GetOrderServlet extends HttpServlet {
         order.setOrderDate(new Date());
         Orders orderFromD = ordersDao.add(order);
 
-        for (Map.Entry entry: ((Map<Long, Integer>)httpSession.getAttribute("Order")).entrySet()) {
+        for (Map.Entry entry : ((Map<Long, Integer>) httpSession.getAttribute("Order")).entrySet()) {
             OrderProduct orderProduct = new OrderProduct();
             orderProduct.setOrderId(orderFromD);
             orderProduct.setProductId(productDao.get((Long) entry.getKey()));
             orderProduct.setQuantity(new Long((Integer) entry.getValue()));
             orderProductDao.add(orderProduct);
         }
-        httpSession.setAttribute("Order",null);
+        httpSession.setAttribute("Order", null);
         RequestDispatcher view = req.getRequestDispatcher("index.jsp");
-        view.forward(req,resp);
+        view.forward(req, resp);
     }
 }

@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
+    <jsp:include page="WEB-INF/header.html" flush="true"/><!-- header -->
 
-  <title>Администрация</title>
+    <title>Администрация</title>
 </head>
 <body>
 <jsp:include page="WEB-INF/navbar.jsp" flush="true"/><!-- навигация -->

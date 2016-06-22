@@ -54,8 +54,6 @@ public class StatisticServlet extends HttpServlet {
         List<Orders> ordersListDateMonth = new LinkedList<Orders>();
         for (Orders orders : ordersList) {
 
-           // orders.getOrderDate().compareTo(DateUtils.addWeeks(new Date(), 4));
-
             if (orders.getOrderDate().compareTo(DateUtils.addWeeks(new Date(), -1)) > 0) {
                 ordersListDate.add(orders);
             }

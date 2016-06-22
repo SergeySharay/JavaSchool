@@ -13,10 +13,11 @@
 <div class="container">
     <div class="panel panel-default" id="order">
         <div class="panel-heading">
-             <div align="right">
-            <form role="form" method="get" action="adminproductadd.jsp" class="btn">
-                <input type="submit" value="Добавить товар" class="btn btn-info">
-            </form></div>
+            <div align="right">
+                <form role="form" method="get" action="adminproductadd.jsp" class="btn">
+                    <input type="submit" value="Добавить товар" class="btn btn-info">
+                </form>
+            </div>
         </div>
         <div class="panel-body">
             <table class="table">
@@ -47,6 +48,6 @@
         </div>
     </div>
 </div>
-    <script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 </body>
 </html>

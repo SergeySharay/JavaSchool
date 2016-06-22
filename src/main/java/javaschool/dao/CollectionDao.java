@@ -5,6 +5,7 @@
 package javaschool.dao;
 
 import javaschool.entity.Collection;
+
 /**
  * @deprecated Dao interface for Collection entity.
  */

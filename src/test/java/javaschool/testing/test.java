@@ -44,8 +44,6 @@ public class test {
         ClientAdress clientAdress = new ClientAdress();
         Client client = new Client();
         Mockito.when(mockGenericDaoImpl.add(client)).thenReturn(new Object());
-        //Mockito.when(mockClientAdressDaoImpl.getAdress(client)).thenReturn(clientAdress);
-        //mockClientAdressDaoImpl.getAdress(new Client());
         mockGenericDaoImpl.add(client);
     }
 

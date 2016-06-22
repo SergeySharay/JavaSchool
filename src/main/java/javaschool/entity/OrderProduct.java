@@ -22,10 +22,11 @@ public class OrderProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", length = 10)
+    @Column(name = "id", length = 10)
     public Long getId() {
         return Id;
     }
+
     public void setId(Long id) {
         Id = id;
     }
@@ -34,6 +35,7 @@ public class OrderProduct {
     public Orders getOrderId() {
         return orderId;
     }
+
     public void setOrderId(Orders orderId) {
         this.orderId = orderId;
     }
@@ -42,6 +44,7 @@ public class OrderProduct {
     public Product getProductId() {
         return productId;
     }
+
     public void setProductId(Product productId) {
         this.productId = productId;
     }
@@ -50,6 +53,7 @@ public class OrderProduct {
     public Long getQuantity() {
         return quantity;
     }
+
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }

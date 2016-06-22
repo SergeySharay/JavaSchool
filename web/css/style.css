@@ -158,6 +158,21 @@ a.spoiler.collapsed:after{
 #buttons{
     padding-left: 50px;
 }
-.count_button {position:relative;}
-.plus:before {}
-.minus:before {}
+
+.count_button {
+    position: relative;
+    display: inline-block;
+    border: 1px solid;
+}
+
+.plus,
+.minus {
+    border-radius: 0px;
+}
+
+.getv {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    font-weight: 600;
+}
